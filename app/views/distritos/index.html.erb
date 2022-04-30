@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Distritos</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Distrito</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @distritos.each do |distrito| %>
+      <tr>
+        <td><%= distrito.nombre_distrito %></td>
+        <td><%= link_to 'Detalles', distrito %></td>
+        <td><%= link_to 'Editar', edit_distrito_path(distrito) %></td>
+        <td><%= link_to 'Eliminar', distrito, method: :delete, data: { confirm: '¿Estas seguro?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nuevo Distrito', new_distrito_path, class:'btn btn-primary text-white'%>

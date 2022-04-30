@@ -1,0 +1,2 @@
+class Padron < ApplicationRecord
+end

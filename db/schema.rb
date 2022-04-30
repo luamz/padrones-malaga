@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_30_170414) do
+ActiveRecord::Schema.define(version: 2022_04_30_185139) do
 
   create_table "barrios", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "nombre_barrio"
@@ -18,4 +18,53 @@ ActiveRecord::Schema.define(version: 2022_04_30_170414) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "calles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "barrio_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "nombre_principal"
+    t.index ["barrio_id"], name: "index_calles_on_barrio_id"
+  end
+
+  create_table "distritos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "nombre_distrito"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "nombre_calles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "nombre_calle"
+    t.string "ano_inicio", limit: 4
+    t.string "ano_fin", limit: 4
+    t.bigint "calle_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["calle_id"], name: "index_nombre_calles_on_calle_id"
+  end
+
+  create_table "padrones", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "ano", limit: 4
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "registros", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.integer "pagina_inicio"
+    t.integer "pagina_fin"
+    t.string "enlace"
+    t.bigint "nombre_calle_id", null: false
+    t.bigint "padron_id", null: false
+    t.bigint "distrito_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["distrito_id"], name: "index_registros_on_distrito_id"
+    t.index ["nombre_calle_id"], name: "index_registros_on_nombre_calle_id"
+    t.index ["padron_id"], name: "index_registros_on_padron_id"
+  end
+
+  add_foreign_key "calles", "barrios"
+  add_foreign_key "nombre_calles", "calles"
+  add_foreign_key "registros", "distritos"
+  add_foreign_key "registros", "nombre_calles"
+  add_foreign_key "registros", "padrones"
 end

@@ -1,0 +1,28 @@
+<%= form_with(model: calle, local: true) do |form| %>
+  <% if calle.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(calle.errors.count, "error") %> prohibited this calle from being saved:</h2>
+
+      <ul>
+        <% calle.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="field">
+    <%= form.label :nombre_principal %>
+    <%= form.text_field :nombre_principal %>
+  </div>
+
+  <div class="field">
+    <%= form.label :barrio %>
+    <%= form.select :barrio, options_for_select(@barrios) %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Criar Calle'%>
+  </div>
+<% end %>

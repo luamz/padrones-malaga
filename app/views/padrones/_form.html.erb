@@ -1,0 +1,22 @@
+<%= form_with(model: padron, local: true) do |form| %>
+  <% if padron.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(padron.errors.count, "error") %> prohibited this padron from being saved:</h2>
+
+      <ul>
+        <% padron.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :ano %>
+    <%= form.text_field :ano %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

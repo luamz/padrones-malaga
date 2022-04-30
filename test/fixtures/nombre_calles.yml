@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nombre_calle: MyString
+  ano_inicio: MyString
+  ano_fin: MyString
+  calle: one
+
+two:
+  nombre_calle: MyString
+  ano_inicio: MyString
+  ano_fin: MyString
+  calle: two

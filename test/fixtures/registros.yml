@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pagina_inicio: 
+  pagina_fin: 
+  enlace: MyString
+  nombre_calle: one
+  padron: one
+  distrito: one
+
+two:
+  pagina_inicio: 
+  pagina_fin: 
+  enlace: MyString
+  nombre_calle: two
+  padron: two
+  distrito: two

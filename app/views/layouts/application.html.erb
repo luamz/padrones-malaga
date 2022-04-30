@@ -4,13 +4,30 @@
     <title>PadronesMalaga</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-  Baila
-    <%= yield %>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-white navbar-static-top">
+      <a class="navbar-brand px-4" href="#"><img src="logo.png" alt="Padrones de Málaga"
+                                                 width="80%" height="80%"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link px-3" href="<%= padrones_path %>">Padrones</a>
+          <a class="nav-item nav-link px-3" href="<%= registros_path %>">Registros</a>
+          <a class="nav-item nav-link px-3" href="<%= distritos_path %>">Distritos</a>
+          <a class="nav-item nav-link px-3" href="<%= calles_path %>">Calles</a>
+          <a class="nav-item nav-link px-3" href="<%= barrios_path %>">Barrios</a>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>

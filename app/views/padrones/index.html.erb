@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Padrones</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Año</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @padrones.each do |padron| %>
+      <tr>
+        <td><%= padron.ano %></td>
+        <td><%= link_to 'Detalles', padron %></td>
+        <td><%= link_to 'Editar', edit_padron_path(padron) %></td>
+        <td><%= link_to 'Eliminar', padron, method: :delete, data: { confirm: '¿Estas seguro?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nuevo Padron', new_padron_path, class:'btn btn-primary text-white' %>

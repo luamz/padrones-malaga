@@ -1,0 +1,38 @@
+<%= form_with(model: nombre_calle, local: true) do |form| %>
+  <% if nombre_calle.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(nombre_calle.errors.count, "error") %> prohibited this nombre_calle from being saved:</h2>
+
+      <ul>
+        <% nombre_calle.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :nombre_calle %>
+    <%= form.text_field :nombre_calle %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ano_inicio %>
+    <%= form.text_field :ano_inicio %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ano_fin %>
+    <%= form.text_field :ano_fin %>
+  </div>
+
+  <div class="field">
+    <%= form.label :calle%>
+    <%= form.text_field :calle, value: @calle, readonly: true %>
+    <%= form.hidden_field :calle, value: @calle_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
