@@ -12,8 +12,13 @@ class NombreCallesController < ApplicationController
 
   # GET /nombre_calles/new
   def new
+    @nombre_calle = NombreCalle.new
+  end
+
+  # GET /nombre_calles/new_nombre_calle/1
+  def new_nombre_calle
     @calle_id = params[:calle_id]
-    @calle = Calle.find(@calle_id).nombre_principal
+    @calle = Calle.find(@calle_id).principal
     @nombre_calle = NombreCalle.new
   end
 

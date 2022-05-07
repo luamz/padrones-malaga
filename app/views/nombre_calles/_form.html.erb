@@ -1,4 +1,4 @@
-<%= form_with(model: nombre_calle, local: true) do |form| %>
+<%= form_with(model: nombre_calle, local: true, class:'form-group') do |form| %>
   <% if nombre_calle.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(nombre_calle.errors.count, "error") %> prohibited this nombre_calle from being saved:</h2>
@@ -11,25 +11,42 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :nombre_calle %>
-    <%= form.text_field :nombre_calle %>
+  <div class="field row">
+    <% if current_page?(action: 'new') %>
+      <%= form.label :nombre_calle, 'Nombre Principal de la Calle', class:'col-md-4 col-form-label'%>
+      <%= form.text_field :nombre_calle, class:'form-control', placeholder:'Nombre Principal de la Calle'%>
+    <% elsif current_page?(action: 'new_nombre_calle')%>
+      <%= form.label :nombre_calle, 'Nuevo nombre de la Calle', class:'col-md-2 col-form-label'%>
+      <div class="col-md-6">
+        <%= form.text_field :nombre_calle, class:'form-control', placeholder:'Nombre Principal de la Calle'%>
+      </div>
+    <% end %>
   </div>
 
-  <div class="field">
-    <%= form.label :ano_inicio %>
-    <%= form.text_field :ano_inicio %>
+  <div class="field row">
+    <div class="col-md-3">
+      <%= form.label :ano_inicio, 'Año de Inicio', class:'form-label' %>
+    </div>
+    <div class="col-md-6">
+      <%= form.text_field :ano_inicio, class:'form-control' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :ano_fin %>
-    <%= form.text_field :ano_fin %>
+  <div class="field row">
+    <div class="col-md-3 text-end">
+      <%= form.label :ano_fin, 'Año de Fin', class:'form-label' %>
+    </div>
+    <div class="col-md-6">
+      <%= form.text_field :ano_fin, class:'form-control' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :calle%>
-    <%= form.text_field :calle, value: @calle, readonly: true %>
-    <%= form.hidden_field :calle, value: @calle_id %>
+  <div class="field row">
+    <% if current_page?(action: 'new_nombre_calle') %>
+      <%= form.label :calle%>
+      <%= form.text_field :calle, value: @calle, readonly: true %>
+      <%= form.hidden_field :calle, value: @calle_id %>
+    <% end %>
   </div>
 
   <div class="actions">

@@ -1,0 +1,5 @@
+<h1  class="py-4">Agregar un nuevo nombre a la calle <%=@calle %></h1>
+
+<%= render 'form', nombre_calle: @nombre_calle, calle_id:@calle_id, calle:@calle%>
+
+<%= link_to 'Volver', nombre_calles_path %>

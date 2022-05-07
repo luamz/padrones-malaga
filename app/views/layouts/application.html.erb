@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>PadronesMalaga</title>
+    <title>Padrones Málaga</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -11,8 +11,7 @@
 
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-white navbar-static-top">
-      <a class="navbar-brand px-4" href="#"><img src="logo.png" alt="Padrones de Málaga"
-                                                 width="80%" height="80%"></a>
+      <a class="navbar-brand px-4" href="#">Padrones de Málaga</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -22,6 +21,7 @@
           <a class="nav-item nav-link px-3" href="<%= registros_path %>">Registros</a>
           <a class="nav-item nav-link px-3" href="<%= distritos_path %>">Distritos</a>
           <a class="nav-item nav-link px-3" href="<%= calles_path %>">Calles</a>
+          <a class="nav-item nav-link px-3" href="<%= nombre_calles_path %>">Nombres de las Calles</a>
           <a class="nav-item nav-link px-3" href="<%= barrios_path %>">Barrios</a>
         </div>
       </div>

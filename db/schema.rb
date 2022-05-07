@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_30_185139) do
+ActiveRecord::Schema.define(version: 2022_05_07_095709) do
 
   create_table "barrios", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "nombre_barrio"
@@ -22,7 +22,6 @@ ActiveRecord::Schema.define(version: 2022_04_30_185139) do
     t.bigint "barrio_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "nombre_principal"
     t.index ["barrio_id"], name: "index_calles_on_barrio_id"
   end
 
@@ -39,6 +38,7 @@ ActiveRecord::Schema.define(version: 2022_04_30_185139) do
     t.bigint "calle_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "principal", default: false
     t.index ["calle_id"], name: "index_nombre_calles_on_calle_id"
   end
 

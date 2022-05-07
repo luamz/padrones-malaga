@@ -4,7 +4,6 @@ class CallesController < ApplicationController
   # GET /calles or /calles.json
   def index
     @calles = Calle.all
-
   end
 
   # GET /calles/1 or /calles/1.json
@@ -28,8 +27,9 @@ class CallesController < ApplicationController
 
   # POST /calles or /calles.json
   def create
+
     barrio_id = Barrio.find_by(nombre_barrio:calle_params[:barrio]).id
-    @calle = Calle.new(barrio_id: barrio_id, nombre_principal: calle_params[:nombre_principal])
+    @calle = Calle.new(barrio_id: barrio_id)
 
     respond_to do |format|
       if @calle.save
@@ -66,13 +66,16 @@ class CallesController < ApplicationController
   end
 
   private
+    def create_nombre_calle
+      @nombre_calle = NombreCalle.create(nombre_calle: calle_params[:principal])
+      @nombre_calle.save
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_calle
       @calle = Calle.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def calle_params
-      params.require(:calle).permit(:barrio, :nombre_principal)
+      params.require(:calle).permit(:barrio, :principal)
     end
 end

@@ -16,7 +16,7 @@
     <% @calles.each do |calle| %>
       <tr>
         <td class="col-md-2"><%= calle.barrio.nombre_barrio %></td>
-        <td class="col-md-2"><%= link_to "#{calle.nombre_principal}", calle %></td>
+        <td class="col-md-2"><%= link_to "#{calle.principal}", calle %></td>
         <td class="col-md-4"><%= calle.otros_nombres %></td>
         <td class="col-md-4"><%= link_to 'Agregar Nuevo Nombre', new_nombre_calle_path(calle) %></td>
         <td class="col-md-2">
@@ -24,7 +24,7 @@
             <i class="fa fa-pencil"></i>
           <% end %>
         </td>
-        <td class="col-md-2">
+        <td class="col-md-1">
           <%= link_to calle, method: :delete, data: { confirm: '¿Estas seguro?' } do %>
             <i class="fa fa-trash-can"></i>
           <% end %>
