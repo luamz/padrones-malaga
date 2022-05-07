@@ -1,11 +1,19 @@
 <p id="notice"><%= notice %></p>
 
 
-<div class="row">
-  <div class="col-md-4">Nombre Principal:<h5><%= @calle.nombre_principal.nombre_calle%></h5></div>
-  <div class="col-md-4">Barrio: <h5><%= @calle.barrio.nombre_barrio%></h5></div>
-  <div class="col-md-4">Otros Nombres: <h5><%= @calle.otros_nombres %></h5></div>
-</div>
+<div class="py-lg-8">
+  <div class="">
+    <div class="col-md-4">Nombre Principal:<h5><%= @calle.principal%></h5></div>
+    <div class="col-md-4">Barrio: <h5><%= @calle.barrio.nombre_barrio%></h5></div>
+    <div class="col-md-4">Otros Nombres: <h5><%= @calle.otros_nombres %></h5></div>
+  </div>
 
-<%= link_to 'Editar', edit_calle_path(@calle) %> |
-<%= link_to 'Regressar', calles_path %>
+  <div class="row">
+    <div class="col-md-2">
+      <%= link_to 'Volver', calles_path, class:'btn btn-primary text-white col-md-12' %>
+    </div>
+    <div class=" col-md-2">
+      <%= link_to 'Editar', edit_calle_path(@calle), class:'btn btn-secondary text-white col-md-12' %>
+    </div>
+  </div>
+</div>

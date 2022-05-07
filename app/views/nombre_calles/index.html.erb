@@ -8,8 +8,8 @@
   <thead>
     <tr>
       <th>Nombre calle</th>
-      <th>Ano inicio</th>
-      <th>Ano fin</th>
+      <th>Año inicio</th>
+      <th>Año fin</th>
       <th>Calle</th>
     </tr>
   </thead>
@@ -17,13 +17,20 @@
   <tbody>
     <% @nombre_calles.each do |nombre_calle| %>
       <tr>
-        <td><%= nombre_calle.nombre_calle %></td>
-        <td><%= nombre_calle.ano_inicio %></td>
-        <td><%= nombre_calle.ano_fin %></td>
-        <td><%= nombre_calle.calle_id %></td>
-        <td><%= link_to 'Show', nombre_calle %></td>
-        <td><%= link_to 'Edit', edit_nombre_calle_path(nombre_calle) %></td>
-        <td><%= link_to 'Destroy', nombre_calle, method: :delete, data: { confirm: '¿Estas seguro?' } %></td>
+        <td class="col-md-2"><%= link_to "#{nombre_calle.nombre_calle}", nombre_calle %></td>
+        <td class="col-md-1"><%= nombre_calle.ano_inicio %></td>
+        <td class="col-md-1"><%= nombre_calle.ano_fin %></td>
+        <td class="col-md-2"><%= nombre_calle.calle.principal %></td>
+        <td class="col-md-1">
+          <%= link_to edit_nombre_calle_path(nombre_calle) do %>
+            <i class="fa fa-pencil"></i>
+          <% end %>
+        </td>
+        <td class="col-md-1">
+          <%= link_to nombre_calle, method: :delete, data: { confirm: '¿Estas seguro?' } do %>
+            <i class="fa fa-trash-can"></i>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

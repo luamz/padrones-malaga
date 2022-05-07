@@ -13,22 +13,32 @@ class NombreCallesController < ApplicationController
   # GET /nombre_calles/new
   def new
     @nombre_calle = NombreCalle.new
+    @calle = Calle.new
+    barrios = []
+    Barrio.all.each {|barrio| barrios << barrio.nombre_barrio}
+    @barrios = barrios
   end
 
   # GET /nombre_calles/new_nombre_calle/1
   def new_nombre_calle
     @calle_id = params[:calle_id]
-    @calle = Calle.find(@calle_id).principal
+    @calle = Calle.find(@calle_id)
+    @barrio = @calle.barrio
     @nombre_calle = NombreCalle.new
   end
 
   # GET /nombre_calles/1/edit
   def edit
+    @calle = Calle.find(@nombre_calle.calle_id)
   end
 
   # POST /nombre_calles or /nombre_calles.json
   def create
+    barrio = Barrio.find_by(params[:barrio])
     @nombre_calle = NombreCalle.new(nombre_calle_params)
+    @nombre_calle.calle = Calle.new(barrio: barrio)
+    puts @calle.inspect
+    puts @nombre_calle.inspect
 
     respond_to do |format|
       if @nombre_calle.save
@@ -70,8 +80,13 @@ class NombreCallesController < ApplicationController
       @nombre_calle = NombreCalle.find(params[:id])
     end
 
+
+
     # Only allow a list of trusted parameters through.
     def nombre_calle_params
       params.require(:nombre_calle).permit(:nombre_calle, :ano_inicio, :ano_fin, :calle_id)
+    end
+    def calle_params
+      params.require(:calle).permit(:barrio)
     end
 end

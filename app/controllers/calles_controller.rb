@@ -10,13 +10,6 @@ class CallesController < ApplicationController
   def show
   end
 
-  # GET /calles/new
-  def new
-    barrios = []
-    Barrio.all.each {|barrio| barrios << barrio.nombre_barrio}
-    @barrios = barrios
-    @calle = Calle.new
-  end
 
   # GET /calles/1/edit
   def edit
@@ -33,7 +26,7 @@ class CallesController < ApplicationController
 
     respond_to do |format|
       if @calle.save
-        format.html { redirect_to calle_url(@calle), notice: "Calle was successfully created." }
+        format.html { redirect_to "/nombre_calles/new_nombre_calle/#{@calle.id}", notice: "Calle was successfully created." }
         format.json { render :show, status: :created, location: @calle }
       else
         format.html { render :new, status: :unprocessable_entity }

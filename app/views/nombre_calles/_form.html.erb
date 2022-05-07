@@ -11,45 +11,76 @@
     </div>
   <% end %>
 
-  <div class="field row">
-    <% if current_page?(action: 'new') %>
-      <%= form.label :nombre_calle, 'Nombre Principal de la Calle', class:'col-md-4 col-form-label'%>
-      <%= form.text_field :nombre_calle, class:'form-control', placeholder:'Nombre Principal de la Calle'%>
-    <% elsif current_page?(action: 'new_nombre_calle')%>
-      <%= form.label :nombre_calle, 'Nuevo nombre de la Calle', class:'col-md-2 col-form-label'%>
-      <div class="col-md-6">
-        <%= form.text_field :nombre_calle, class:'form-control', placeholder:'Nombre Principal de la Calle'%>
+
+  <% if @calle&.id&.present? %>
+  <div class="field">
+      <div class="field col-md-6">
+        <%= form.label :calle, "Nombre Principal", class:'form-label'%>
+        <div class="col-md-8">
+          <%= form.text_field :calle, value: @calle.principal, readonly: true, class:'form-control' %>
+        </div>
+      </div>
+      <%= form.hidden_field :calle, value: @calle_id %>
+  </div>
+  <% end %>
+
+  <%= fields_for :calle, @nombre_calle.calle do |calle| %>
+    <% if @barrios.present? || @barrio.present? %>
+      <div class="field col-md-6">
+        <%= calle.label :barrio %>
+        <div class="col-md-8">
+          <% if @barrios.present? %>
+            <%= calle.select :barrio, options_for_select(@barrios), {}, class:'form-select' %>
+          <% elsif @barrio.present? %>
+            <%= calle.text_field :calle, value: @barrio.nombre_barrio, readonly: true, class:'form-control' %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+
+  <div class="field">
+    <% if @calle&.id&.present? %>
+      <%= form.label :nombre_calle, 'Nombre Principal', class:'col-md-2 col-form-label'%>
+      <div class="col-md-4">
+        <%= form.text_field :nombre_calle, class:'form-control'%>
+      </div>
+    <% else %>
+      <%= form.label :nombre_calle, 'Nuevo Nombre', class:'col-md-2 col-form-label'%>
+      <div class="col-md-4">
+        <%= form.text_field :nombre_calle, class:'form-control'%>
       </div>
     <% end %>
   </div>
 
-  <div class="field row">
-    <div class="col-md-3">
+  <div class="row">
+    <div class="field col-md-2">
       <%= form.label :ano_inicio, 'Año de Inicio', class:'form-label' %>
+      <div class="col-md-8">
+        <%= form.text_field :ano_inicio, class:'form-control' %>
+      </div>
     </div>
-    <div class="col-md-6">
-      <%= form.text_field :ano_inicio, class:'form-control' %>
-    </div>
-  </div>
-
-  <div class="field row">
-    <div class="col-md-3 text-end">
-      <%= form.label :ano_fin, 'Año de Fin', class:'form-label' %>
-    </div>
-    <div class="col-md-6">
-      <%= form.text_field :ano_fin, class:'form-control' %>
+    <div class="field col-md-2">
+        <%= form.label :ano_fin, 'Año de Fin', class:'form-label' %>
+      <div class="col-md-8">
+        <%= form.text_field :ano_fin, class:'form-control' %>
+      </div>
     </div>
   </div>
 
-  <div class="field row">
-    <% if current_page?(action: 'new_nombre_calle') %>
-      <%= form.label :calle%>
-      <%= form.text_field :calle, value: @calle, readonly: true %>
-      <%= form.hidden_field :calle, value: @calle_id %>
-    <% end %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+  <div class="col-md-6 py-4">
+    <div class= "actions">
+      <%= form.submit "Agregar Nueva Calle", class:"btn btn-success" %>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <%= link_to 'Volver', nombre_calles_path, class:'btn btn-primary text-white col-md-12' %>
+      </div>
+      <% if @nombre_calle.present? && @nombre_calle&.id&.present? %>
+        <div class=" col-md-4">
+          <%= link_to 'Mostrar', @nombre_calle, class:'btn btn-secondary text-white col-md-12' %>
+        </div>
+      <% end %>
+    </div>
   </div>
 <% end %>
