@@ -18,7 +18,7 @@
         <td class="col-md-2"><%= calle.barrio.nombre_barrio %></td>
         <td class="col-md-2"><%= link_to "#{calle.principal}", calle %></td>
         <td class="col-md-4"><%= calle.otros_nombres %></td>
-        <td class="col-md-4"><%= link_to 'Agregar Nuevo Nombre', new_nombre_calle_path(calle) %></td>
+        <td class="col-md-4"><%= link_to 'Agregar Nuevo Nombre', "nombre_calles/new_nombre_calle/#{calle.id}" %></td>
         <td class="col-md-2">
           <%= link_to edit_calle_path(calle) do %>
             <i class="fa fa-pencil"></i>
@@ -36,5 +36,5 @@
 
 <br>
 
-<%= link_to 'Nueva Calle', new_calle_path, class:'btn btn-primary text-white xp-2' %>
+<%= link_to 'Nueva Calle', new_nombre_calle_path, class:'btn btn-primary text-white xp-2' %>
 <%= link_to 'Nuevo Barrio', new_barrio_path, class:'btn btn-secondary text-white' %>

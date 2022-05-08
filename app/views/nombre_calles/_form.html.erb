@@ -12,15 +12,16 @@
   <% end %>
 
 
-  <% if @calle&.id&.present? %>
+  <% if @calle.present? %>
   <div class="field">
       <div class="field col-md-6">
-        <%= form.label :calle, "Nombre Principal", class:'form-label'%>
+        <%= form.label :calle_principal, "Nombre Principal", class:'form-label'%>
         <div class="col-md-8">
-          <%= form.text_field :calle, value: @calle.principal, readonly: true, class:'form-control' %>
+          <%= form.text_field :calle_principal, value: @calle.principal, readonly: true, class:'form-control' %>
         </div>
       </div>
-      <%= form.hidden_field :calle, value: @calle_id %>
+      <%= form.hidden_field :calle_id, value: @calle_id %>
+
   </div>
   <% end %>
 
@@ -40,11 +41,12 @@
   <% end %>
 
   <div class="field">
-    <% if @calle&.id&.present? %>
+    <% unless @calle.present? %>
       <%= form.label :nombre_calle, 'Nombre Principal', class:'col-md-2 col-form-label'%>
       <div class="col-md-4">
         <%= form.text_field :nombre_calle, class:'form-control'%>
       </div>
+      <%= form.hidden_field :principal, value: true %>
     <% else %>
       <%= form.label :nombre_calle, 'Nuevo Nombre', class:'col-md-2 col-form-label'%>
       <div class="col-md-4">
@@ -67,6 +69,8 @@
       </div>
     </div>
   </div>
+
+
 
   <div class="col-md-6 py-4">
     <div class= "actions">

@@ -13,7 +13,6 @@ class NombreCallesController < ApplicationController
   # GET /nombre_calles/new
   def new
     @nombre_calle = NombreCalle.new
-    @calle = Calle.new
     barrios = []
     Barrio.all.each {|barrio| barrios << barrio.nombre_barrio}
     @barrios = barrios
@@ -34,15 +33,21 @@ class NombreCallesController < ApplicationController
 
   # POST /nombre_calles or /nombre_calles.json
   def create
-    barrio = Barrio.find_by(params[:barrio])
+    @calle = Calle.find(nombre_calle_params[:calle_id]) if nombre_calle_params[:calle_id].present?
+    barrio = Barrio.find_by(nombre_barrio: calle_params[:barrio])
     @nombre_calle = NombreCalle.new(nombre_calle_params)
-    @nombre_calle.calle = Calle.new(barrio: barrio)
-    puts @calle.inspect
-    puts @nombre_calle.inspect
-
+    if @calle.present?
+      @nombre_calle.calle = @calle
+    else
+      @nombre_calle.calle = Calle.new(barrio: barrio)
+    end
     respond_to do |format|
       if @nombre_calle.save
-        format.html { redirect_to nombre_calle_url(@nombre_calle), notice: "Nombre calle was successfully created." }
+        if @calle.present?
+          format.html { redirect_to nombre_calle_url(@nombre_calle), notice: "Nuevo nombre agregado a la calle con éxito." }
+        else
+          format.html { redirect_to calles_path, notice: "Nueva calle creada con éxito." }
+        end
         format.json { render :show, status: :created, location: @nombre_calle }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -55,7 +60,7 @@ class NombreCallesController < ApplicationController
   def update
     respond_to do |format|
       if @nombre_calle.update(nombre_calle_params)
-        format.html { redirect_to nombre_calle_url(@nombre_calle), notice: "Nombre calle was successfully updated." }
+        format.html { redirect_to nombre_calle_url(@nombre_calle), notice: "Nombre de la calle actualizado con éxito." }
         format.json { render :show, status: :ok, location: @nombre_calle }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -66,8 +71,6 @@ class NombreCallesController < ApplicationController
 
   # DELETE /nombre_calles/1 or /nombre_calles/1.json
   def destroy
-    @nombre_calle.destroy
-
     respond_to do |format|
       format.html { redirect_to nombre_calles_url, notice: "Nombre calle was successfully destroyed." }
       format.json { head :no_content }
@@ -80,11 +83,9 @@ class NombreCallesController < ApplicationController
       @nombre_calle = NombreCalle.find(params[:id])
     end
 
-
-
     # Only allow a list of trusted parameters through.
     def nombre_calle_params
-      params.require(:nombre_calle).permit(:nombre_calle, :ano_inicio, :ano_fin, :calle_id)
+      params.require(:nombre_calle).permit(:nombre_calle, :ano_inicio, :ano_fin, :principal, :calle_id)
     end
     def calle_params
       params.require(:calle).permit(:barrio)
