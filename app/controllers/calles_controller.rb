@@ -3,7 +3,8 @@ class CallesController < ApplicationController
 
   # GET /calles or /calles.json
   def index
-    @calles = Calle.all
+    @calles = Calle.page(params[:page])
+    @calles.sort_by(&:principal).sort_by(&:barrio)
   end
 
   # GET /calles/1 or /calles/1.json

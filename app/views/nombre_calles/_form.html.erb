@@ -73,16 +73,16 @@
 
 
   <div class="col-md-6 py-4">
-    <div class= "actions">
-      <%= form.submit "Agregar Nueva Calle", class:"btn btn-success" %>
-    </div>
     <div class="row">
+      <div class= "col-md-4">
+        <%= form.submit "Agregar Nueva Calle", class:"btn btn-success botoes" %>
+      </div>
       <div class="col-md-4">
-        <%= link_to 'Volver', nombre_calles_path, class:'btn btn-primary text-white col-md-12' %>
+        <%= link_to 'Volver', nombre_calles_path, class:'btn btn-primary botoes text-white col-md-12' %>
       </div>
       <% if @nombre_calle.present? && @nombre_calle&.id&.present? %>
         <div class=" col-md-4">
-          <%= link_to 'Mostrar', @nombre_calle, class:'btn btn-secondary text-white col-md-12' %>
+          <%= link_to 'Mostrar', @nombre_calle, class:'btn btn-secondary botoes text-white col-md-12' %>
         </div>
       <% end %>
     </div>

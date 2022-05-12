@@ -4,6 +4,7 @@ class Calle < ApplicationRecord
   belongs_to :barrio
   has_many :nombre_calles
 
+  paginates_per 20
 
   def principal
     nombres.where(principal:true)&.first&.nombre_calle

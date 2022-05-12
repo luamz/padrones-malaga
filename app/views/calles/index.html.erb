@@ -1,6 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Calles</h1>
+<div class="row">
+  <div class="col-md-8"><h1>Calles</h1></div>
+  <div class="col-md-4 mt-2 row">
+    <div class="col-md-5"><%= link_to 'Nueva Calle', new_nombre_calle_path, class:'btn btn-success text-white' %></div>
+    <div class="col-md-5"><%= link_to 'Nuevo Barrio', new_barrio_path, class:'btn btn-primary text-white' %></div>
+  </div>
+
+</div>
 
 <table  class="table table-striped">
   <thead>
@@ -18,23 +25,32 @@
         <td class="col-md-2"><%= calle.barrio.nombre_barrio %></td>
         <td class="col-md-2"><%= link_to "#{calle.principal}", calle %></td>
         <td class="col-md-4"><%= calle.otros_nombres %></td>
-        <td class="col-md-4"><%= link_to 'Agregar Nuevo Nombre', "nombre_calles/new_nombre_calle/#{calle.id}" %></td>
         <td class="col-md-2">
-          <%= link_to edit_calle_path(calle) do %>
-            <i class="fa fa-pencil"></i>
+          <%= link_to new_nombre_calle_nombre_calles_path(calle), class: 'btn btn-dark btn-xs text-white' do %>
+            <i class="fa fa-plus"></i>
+            Agregar Nuevo Nombre
           <% end %>
         </td>
         <td class="col-md-1">
-          <%= link_to calle, method: :delete, data: { confirm: '¿Estas seguro?' } do %>
-            <i class="fa fa-trash-can"></i>
-          <% end %>
+          <div class="row">
+            <div class="col-md-2">
+              <%= link_to edit_calle_path(calle) do %>
+                <i class="fa fa-pencil"></i>
+              <% end %>
+            </div>
+            <div class="col-md-2">
+              <%= link_to calle, method: :delete, data: { confirm: '¿Estas seguro?' } do %>
+                <i class="fa fa-trash-can"></i>
+              <% end %>
+            </div>
+          </div>
         </td>
+
       </tr>
     <% end %>
   </tbody>
 </table>
 
+<%= paginate @calles %>
 <br>
 
-<%= link_to 'Nueva Calle', new_nombre_calle_path, class:'btn btn-primary text-white xp-2' %>
-<%= link_to 'Nuevo Barrio', new_barrio_path, class:'btn btn-secondary text-white' %>

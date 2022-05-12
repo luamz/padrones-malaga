@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-  <div class="field col-md-6">
+  <div class="col-md-8 pb-4 mx-auto">
     <%= form.label :barrio %>
     <div class="col-md-8">
       <% if @barrios.present? %>
@@ -22,12 +22,58 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-md-2">
-      <%= link_to 'Volver', calles_path, class:'btn btn-primary text-white col-md-12' %>
-    </div>
-    <div class=" col-md-2">
-      <%= link_to 'Mostrar', @calle, class:'btn btn-secondary text-white col-md-12' %>
+  <div class="col-md-8 mx-auto">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Nombre calle</th>
+        <th class="text-center">Año de Inicio</th>
+        <th class="text-center">Año de Fin</th>
+        <th class="text-center">Principal</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @calle.nombres.each do |nombre_calle| %>
+        <tr>
+          <td class="col-md-2 "><%= link_to "#{nombre_calle.nombre_calle}", nombre_calle %></td>
+          <td class="col-md-1 text-center"><%= nombre_calle.ano_inicio %></td>
+          <td class="col-md-1 text-center"><%= nombre_calle.ano_fin %></td>
+          <% if nombre_calle.principal? %>
+            <td class="col-md-2 text-center"><i class="fa-solid fa-check"></i></td>
+          <% else %>
+            <td class="col-md-2 text-center"></td>
+          <% end %>
+          <td class="col-md-1 text-center">
+            <%= link_to edit_nombre_calle_path(nombre_calle) do %>
+              <i class="fa fa-pencil"></i>
+            <% end %>
+          </td>
+          <td class="col-md-1 text-center">
+            <%= link_to nombre_calle, method: :delete, data: { confirm: '¿Estas seguro?' } do %>
+              <i class="fa fa-trash-can"></i>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="col-md-8 py-4 mx-auto">
+    <div class="row">
+      <div class= "col-md-3">
+        <%= form.submit "Actualizar Calle", class:"btn btn-success botoes" %>
+      </div>
+      <div class= "col-md-3">
+        <%= link_to "Agregar Nombre", "nombre_calles/new_nombre_calle/#{calle.id}", class:"btn btn-dark botoes" %>
+      </div>
+      <div class="col-md-3">
+        <%= link_to 'Volver', calles_path, class:'btn btn-primary botoes text-white col-md-12' %>
+      </div>
+      <div class=" col-md-3">
+        <%= link_to 'Mostrar', @calle, class:'btn btn-secondary botoes text-white col-md-12' %>
+      </div>
     </div>
   </div>
 <% end %>

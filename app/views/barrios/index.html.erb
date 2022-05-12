@@ -1,27 +1,39 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Barrios</h1>
-
+<div class="row">
+  <div class="col-md-8"><h1>Barrios</h1></div>
+  <div class="col-md-4 mt-2"><%= link_to 'Nuevo Barrio', new_barrio_path, class:'btn btn-success text-white' %></div>
+</div>
 
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>Nombre del barrio</th>
+      <th>Nombre del Barrio</th>
+      <th class="text-center">Número de Calles</th>
     </tr>
   </thead>
 
   <tbody>
     <% @barrios.each do |barrio| %>
       <tr>
-        <td class="col-md-2'"><%= barrio.nombre_barrio %></td>
-        <td class="col-md-2'"><%= link_to 'Detalles', barrio %></td>
-        <td class="col-md-2'"><%= link_to 'Editar', edit_barrio_path(barrio) %></td>
-        <td class="col-md-2'"><%= link_to 'Eliminar', barrio, method: :delete, data: { confirm: '¿Estas seguro?' } %></td>
+        <td class="col-md-2"><%= barrio.nombre_barrio %></td>
+        <td class="col-md-2 text-center"><%= barrio.num_calles %></td>
+        <td class="col-md-1"><%= link_to 'Detalles', barrio %></td>
+        <td class="col-md-2">
+          <div class="row">
+            <div class="col-md-2">
+              <%= link_to edit_barrio_path(barrio) do %>
+                <i class="fa fa-pencil"></i>
+              <% end %>
+            </div>
+            <div class="col-md-2">
+              <%= link_to barrio, method: :delete, data: { confirm: '¿Estas seguro?' } do %>
+                <i class="fa fa-trash-can"></i>
+              <% end %>
+            </div>
+          </div>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Barrio', new_barrio_path %>

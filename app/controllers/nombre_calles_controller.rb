@@ -44,7 +44,7 @@ class NombreCallesController < ApplicationController
     respond_to do |format|
       if @nombre_calle.save
         if @calle.present?
-          format.html { redirect_to nombre_calle_url(@nombre_calle), notice: "Nuevo nombre agregado a la calle con éxito." }
+          format.html { redirect_to calles_path, notice: "Nuevo nombre agregado a la calle con éxito." }
         else
           format.html { redirect_to calles_path, notice: "Nueva calle creada con éxito." }
         end
