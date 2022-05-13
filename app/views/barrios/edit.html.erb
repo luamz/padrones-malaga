@@ -1,6 +1,5 @@
-<h1>Editing Barrio</h1>
+<div class="row">
+  <h1 class="col-md-8 py-4 mx-auto text-center">Editando el Barrio <%= @barrio.nombre_barrio%></h1>
 
-<%= render 'form', barrio: @barrio %>
-
-<%= link_to 'Show', @barrio %> |
-<%= link_to 'Back', barrios_path %>
+  <%= render 'form', barrio: @barrio %>
+</div>

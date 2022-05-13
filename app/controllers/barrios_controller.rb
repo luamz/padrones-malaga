@@ -25,7 +25,7 @@ class BarriosController < ApplicationController
 
     respond_to do |format|
       if @barrio.save
-        format.html { redirect_to barrio_url(@barrio), notice: "Barrio was successfully created." }
+        format.html { redirect_to barrios_path, notice: "Barrio actualizado con éxito." }
         format.json { render :show, status: :created, location: @barrio }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class BarriosController < ApplicationController
   def update
     respond_to do |format|
       if @barrio.update(barrio_params)
-        format.html { redirect_to barrio_url(@barrio), notice: "Barrio was successfully updated." }
+        format.html { redirect_to barrios_path, notice: "Barrio actualizado con éxito." }
         format.json { render :show, status: :ok, location: @barrio }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +52,7 @@ class BarriosController < ApplicationController
     @barrio.destroy
 
     respond_to do |format|
-      format.html { redirect_to barrios_url, notice: "Barrio was successfully destroyed." }
+      format.html { redirect_to barrios_url, notice: "Barrio elimanado con éxito." }
       format.json { head :no_content }
     end
   end
