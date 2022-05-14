@@ -45,9 +45,10 @@ class NombreCallesController < ApplicationController
     respond_to do |format|
       if @nombre_calle.save
         if @calle.present?
-          format.html { redirect_to calles_path, notice: "Nuevo nombre agregado a la calle con éxito." }
+          format.html { redirect_to @calle, notice: "Nuevo nombre agregado a la calle con éxito." }
         else
-          format.html { redirect_to calles_path, notice: "Nueva calle creada con éxito." }
+          @calle = @nombre_calle.calle
+          format.html { redirect_to @calle, notice: "Nueva calle creada con éxito." }
         end
         format.json { render :show, status: :created, location: @nombre_calle }
       else
@@ -72,8 +73,11 @@ class NombreCallesController < ApplicationController
 
   # DELETE /nombre_calles/1 or /nombre_calles/1.json
   def destroy
+    @calle = @nombre_calle.calle
+    @nombre_calle.destroy
+
     respond_to do |format|
-      format.html { redirect_to nombre_calles_url, notice: "Nombre calle was successfully destroyed." }
+      format.html { redirect_to edit_calle_path(@calle), notice: "Nombre de la calle eliminado con éxito." }
       format.json { head :no_content }
     end
   end

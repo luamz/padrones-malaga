@@ -45,14 +45,19 @@
           <% else %>
             <td class="col-md-2 text-center"><%= form.radio_button :principal, nombre_calle.id %></td>
           <% end %>
-          <td class="col-md-1 text-center">
-            <%= link_to edit_nombre_calle_path(nombre_calle) do %>
+          <td class="col-md-1">
+            <%= link_to edit_nombre_calle_path(calle), class: 'btn btn-primary btn-xs text-white' do %>
               <i class="fa fa-pencil"></i>
+              Editar
             <% end %>
           </td>
-          <td class="col-md-1 text-center">
-            <%= link_to nombre_calle, method: :delete, data: { confirm: '¿Estas seguro?' } do %>
-              <i class="fa fa-trash-can"></i>
+          <td class="col-md-1">
+            <% unless nombre_calle.principal?%>
+              <%= link_to nombre_calle, method: :delete, class: 'btn btn-danger btn-xs text-white',data: { confirm: '¿Estas seguro?' } do %>
+                <i class="fa fa-x"></i>
+                Eliminar
+              <% end %>
+
             <% end %>
           </td>
         </tr>

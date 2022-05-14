@@ -17,18 +17,15 @@
 
 <p>
   <strong>Nombre calle:</strong>
-  <%= @registro.nombre_calle_id %>
+  <%= @registro.nombre_calle.nombre_calle %>
 </p>
 
 <p>
   <strong>Padron:</strong>
-  <%= @registro.padron_id %>
+  <%= @registro.padron.ano %>
+  <%= @registro.padron.distrito.nombre_distrito %>
 </p>
 
-<p>
-  <strong>Distrito:</strong>
-  <%= @registro.distrito_id %>
-</p>
 
 <%= link_to 'Edit', edit_registro_path(@registro) %> |
 <%= link_to 'Back', registros_path %>

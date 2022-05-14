@@ -1,6 +1,7 @@
 class Distrito < ApplicationRecord
+  has_many :padrones
 
   def num_registros
-    Registro.where(distrito: self).count
+    Padron.where(distrito: self).count
   end
 end

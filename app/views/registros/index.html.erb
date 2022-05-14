@@ -1,6 +1,24 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Registros</h1>
+<div class="col-md-8">
+  <h1>Registros</h1></div>
+<div class="col-md-12 my-4 row">
+  <%= form_with(url: registros_path, local: true, method: :get) do |form| %>
+    <div class="row">
+      <div class="col-md-4">
+        <% if params[:query].present? %>
+          <%= form.text_field :query, class:"form-control",  value: params[:query], placeholder:"Nombre de la calle o barrio..."  %>
+        <% else %>
+          <%= form.text_field :query, class:"form-control",  placeholder:"Nombre de la calle o barrio..."  %>
+        <% end %>
+      </div>
+      <div class= "col-md-4">
+        <%= form.submit "Buscar", class:"btn btn-secondary botoes" %>
+      </div>
+      <div class="col-md-2"><%= link_to 'Nuevo Registro', new_registro_path, class:'btn btn-primary botoes text-white' %></div>
+    </div>
+  <% end %>
+</div>
 
 <table class="table table-striped">
   <thead>
@@ -18,7 +36,6 @@
     <% @registros.each do |registro| %>
       <tr>
         <td><%= registro.padron.ano %></td>
-        <td><%= registro.distrito.nombre_distrito %></td>
         <td><%=link_to "#{registro.nombre_calle.nombre_calle}", registro.nombre_calle.calle %></td>
         <td><%= registro.pagina_inicio %></td>
         <td><%= registro.pagina_fin %></td>
@@ -30,7 +47,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Registro', new_registro_path %>

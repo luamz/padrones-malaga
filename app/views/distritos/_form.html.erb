@@ -1,22 +1,33 @@
 <%= form_with(model: distrito, local: true) do |form| %>
-  <% if distrito.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(distrito.errors.count, "error") %> prohibited this distrito from being saved:</h2>
+  <div class="col-md-6 mx-auto">
+    <% if distrito.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(distrito.errors.count, "error") %> prohibited this distrito from being saved:</h2>
 
-      <ul>
-        <% distrito.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+        <ul>
+          <% distrito.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="field">
+      <%= form.label :nombre_distrito, "Nombre", class:'form-label'%>
+      <div class="col-md-12">
+        <%= form.text_field :nombre_distrito, class:'form-control' %>
+      </div>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= form.label :nombre_distrito %>
-    <%= form.text_field :nombre_distrito %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+    <div class="row">
+      <div class= "col-md-4">
+        <%= form.submit class:"btn btn-success botoes" %>
+      </div>
+      <div class="col-md-4">
+        <%= link_to 'Volver', distritos_path, class:'btn btn-primary botoes text-white col-md-12' %>
+      </div>
+      <div class=" col-md-4">
+        <%= link_to 'Mostrar', @distrito, class:'btn btn-secondary botoes text-white col-md-12' %>
+      </div>
+    </div>
   </div>
 <% end %>

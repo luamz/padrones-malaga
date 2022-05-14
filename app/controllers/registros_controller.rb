@@ -13,6 +13,10 @@ class RegistrosController < ApplicationController
   # GET /registros/new
   def new
     @registro = Registro.new
+    @padron_y_distrito = Padron.find(params[:padron_id])
+    nombres_calles = []
+    NombreCalle.all.each {|nombre_calle| nombres_calles << nombre_calle.nombre_calle}
+    @nombres_calles = nombres_calles
   end
 
   # GET /registros/1/edit
@@ -21,7 +25,12 @@ class RegistrosController < ApplicationController
 
   # POST /registros or /registros.json
   def create
-    @registro = Registro.new(registro_params)
+    nombre_calle = NombreCalle.find_by(nombre_calle: registro_params[:nombre_calle]) if registro_params[:nombre_calle]
+    @registro = Registro.new(padron_id: registro_params[:padron_id],
+                             nombre_calle: nombre_calle,
+                             pagina_inicio: registro_params[:pagina_inicio],
+                             pagina_fin: registro_params[:pagina_fin],
+                             enlace: registro_params[:enlace])
 
     respond_to do |format|
       if @registro.save
@@ -65,6 +74,6 @@ class RegistrosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def registro_params
-      params.require(:registro).permit(:pagina_inicio, :pagina_fin, :enlace, :nombre_calle_id, :padron_id, :distrito_id)
+      params.require(:registro).permit(:pagina_inicio, :pagina_fin, :enlace, :nombre_calle, :padron_id)
     end
 end

@@ -1,22 +1,41 @@
 <%= form_with(model: padron, local: true) do |form| %>
-  <% if padron.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(padron.errors.count, "error") %> prohibited this padron from being saved:</h2>
+  <div class="col-md-6 mx-auto">
+    <% if padron.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(padron.errors.count, "error") %> prohibited this padron from being saved:</h2>
 
-      <ul>
-        <% padron.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+        <ul>
+          <% padron.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="field">
+      <%= form.label :ano, "Año", class:'form-label'%>
+      <div class="col-md-12">
+        <%= form.text_field :ano, class:'form-control' %>
+      </div>
     </div>
-  <% end %>
+    <div class="field">
+      <%= form.label :distrito, "Distrito", class:'form-label' %>
+      <div class="col-md-12">
+      <%= form.select :distrito, options_for_select(@distritos), {}, class:'form-select' %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :ano %>
-    <%= form.text_field :ano %>
-  </div>
 
-  <div class="actions">
-    <%= form.submit %>
+    <div class="row">
+      <div class= "col-md-4">
+        <%= form.submit class:"btn btn-success botoes" %>
+      </div>
+      <div class="col-md-4">
+        <%= link_to 'Volver', padrones_path, class:'btn btn-primary botoes text-white col-md-12' %>
+      </div>
+      <div class=" col-md-4">
+        <%= link_to 'Mostrar', @padron, class:'btn btn-secondary botoes text-white col-md-12' %>
+      </div>
+    </div>
   </div>
 <% end %>
+

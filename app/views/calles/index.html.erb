@@ -35,7 +35,7 @@
     <tbody>
     <% @calles.each do |calle| %>
       <tr>
-        <td class="col-md-2"><%= calle.barrio.nombre_barrio %></td>
+        <td class="col-md-2"><%= link_to "#{calle.barrio.nombre_barrio}", calle.barrio%></td>
         <td class="col-md-2"><%= link_to "#{calle.principal}", calle %></td>
         <td class="col-md-4"><%= calle.otros_nombres %></td>
         <td class="col-md-2">

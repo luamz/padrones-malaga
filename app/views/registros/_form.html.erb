@@ -1,47 +1,63 @@
-<%= form_with(model: registro, local: true) do |form| %>
-  <% if registro.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(registro.errors.count, "error") %> prohibited this registro from being saved:</h2>
+<%= form_with(model: registro, local: true, class:'form-group') do |form| %>
+  <div class="col-md-8 pb-4 mx-auto">
+    <% if registro.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(registro.errors.count, "error") %> prohibited this registro from being saved:</h2>
+        <ul>
+          <% registro.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
 
-      <ul>
-        <% registro.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+
+    <div class="field row">
+      <div class="col-md-5">
+        <%= form.label :padron, "Padron (Año)", class:'form-label' %>
+        <%= form.text_field :padron, value:@padron_y_distrito.ano, class:'form-control text-center', readonly: true %>
+        <%= form.hidden_field :padron_id, value: @padron_y_distrito.id %>
+      </div>
+      <div class="col-md-5">
+        <%= form.label :distrito, "Distrito", class:'form-label' %>
+        <%= form.text_field :distrito, value:@padron_y_distrito.distrito.nombre_distrito, class:'form-control text-center', readonly: true %>
+      </div>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= form.label :pagina_inicio %>
-    <%= form.text_field :pagina_inicio %>
-  </div>
+    <div class="col-md-10 my-2">
+      <%= form.label :nombre_calle_id, "Calle", class:'form-label' %>
+      <%= form.select :nombre_calle, options_for_select(@nombres_calles), {}, class:'form-select' %>
+    </div>
 
-  <div class="field">
-    <%= form.label :pagina_fin %>
-    <%= form.text_field :pagina_fin %>
-  </div>
+    <div class="row">
+      <div class="field col-md-4">
+        <%= form.label :pagina_inicio, 'Página de Inicio', class:'form-label' %>
+        <div class="col-md-8">
+          <%= form.text_field :pagina_inicio, class:'form-control' %>
+        </div>
+      </div>
+      <div class="field col-md-4">
+        <%= form.label :pagina_fin, 'Página Final', class:'form-label' %>
+        <div class="col-md-8">
+          <%= form.text_field :pagina_fin, class:'form-control' %>
+        </div>
+      </div>
+      <div class="field col-md-10">
+        <%= form.label :enlace, 'Enlace', class:'form-label' %>
+        <%= form.text_field :enlace, class:'form-control' %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :enlace %>
-    <%= form.text_field :enlace %>
-  </div>
-
-  <div class="field">
-    <%= form.label :nombre_calle_id %>
-    <%= form.text_field :nombre_calle_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :padron_id %>
-    <%= form.text_field :padron_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :distrito_id %>
-    <%= form.text_field :distrito_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+    <div class="col-md-8 py-4">
+      <div class="row">
+        <div class="col-md-6">
+          <%= form.submit class:"btn btn-success", style:"width:200px;" %>
+        </div>
+        <div class="col-md-6">
+          <%= link_to 'Volver', nombre_calles_path, class:'btn btn-primary botoes text-white col-md-12' %>
+        </div>
+      </div>
+    </div>
   </div>
 <% end %>
+

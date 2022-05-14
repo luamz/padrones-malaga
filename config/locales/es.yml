@@ -4,6 +4,9 @@ es:
       barrio:
         create: "Crear Barrio"
         update: "Actualizar Barrio"
+      registro:
+        create: "Crear Registro"
+        update: "Actualizar Registro"
       calle:
         update: "Actualizar Calle"
 

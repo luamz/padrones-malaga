@@ -12,6 +12,9 @@ class PadronesController < ApplicationController
 
   # GET /padrones/new
   def new
+    distritos = []
+    Distrito.all.each {|distrito| distritos << distrito.nombre_distrito}
+    @distritos = distritos
     @padron = Padron.new
   end
 
@@ -21,7 +24,8 @@ class PadronesController < ApplicationController
 
   # POST /padrones or /padrones.json
   def create
-    @padron = Padron.new(padron_params)
+    @distrito = Distrito.find_by(nombre_distrito: padron_params[:distrito])
+    @padron = Padron.new(ano: padron_params[:ano], distrito: @distrito)
 
     respond_to do |format|
       if @padron.save
@@ -65,6 +69,6 @@ class PadronesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def padron_params
-      params.require(:padron).permit(:ano)
+      params.require(:padron).permit(:ano, :distrito)
     end
 end
