@@ -3,7 +3,8 @@ class DistritosController < ApplicationController
 
   # GET /distritos or /distritos.json
   def index
-    @distritos = Distrito.all
+    @distritos = Distrito.all.page(params[:page]).per(10)
+    @distritos.sort_by(&:nombre_distrito)
   end
 
   # GET /distritos/1 or /distritos/1.json

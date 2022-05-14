@@ -4,6 +4,9 @@ es:
       barrio:
         create: "Crear Barrio"
         update: "Actualizar Barrio"
+      calle:
+        update: "Actualizar Calle"
+
     page_entries_info:
       more_pages:
         display_entries: Mostrando <b>%{first}&nbsp;-&nbsp;%{last}</b> %{entry_name} de <b>%{total}</b> en total

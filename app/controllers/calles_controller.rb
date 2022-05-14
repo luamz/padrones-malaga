@@ -14,6 +14,7 @@ class CallesController < ApplicationController
 
   # GET /calles/1/edit
   def edit
+    @barrio = @calle.barrio.nombre_barrio
     barrios = []
     Barrio.all.each {|barrio| barrios << barrio.nombre_barrio}
     @barrios = barrios
@@ -27,7 +28,7 @@ class CallesController < ApplicationController
 
     respond_to do |format|
       if @calle.save
-        format.html { redirect_to "/nombre_calles/new_nombre_calle/#{@calle.id}", notice: "Calle was successfully created." }
+        format.html { redirect_to "/nombre_calles/new_nombre_calle/#{@calle.id}", notice: "Calle actualizada con éxito." }
         format.json { render :show, status: :created, location: @calle }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,24 +39,21 @@ class CallesController < ApplicationController
 
   # PATCH/PUT /calles/1 or /calles/1.json
   def update
+    @antigua_principal = @calle.nombres.where(principal:true).first
+    @nueva_principal = NombreCalle.find(calle_params[:principal])
+    unless @antigua_principal == @nueva_principal
+      @antigua_principal.update(principal:false)
+      @nueva_principal.update(principal:true)
+    end
+    barrio_id = Barrio.find_by(nombre_barrio:calle_params[:barrio]).id
     respond_to do |format|
-      if @calle.update(calle_params)
-        format.html { redirect_to calle_url(@calle), notice: "Calle was successfully updated." }
+      if @calle.update(barrio_id: barrio_id)
+        format.html { redirect_to calle_url(@calle), notice: "Calle actualizada con éxito." }
         format.json { render :show, status: :ok, location: @calle }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @calle.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  # DELETE /calles/1 or /calles/1.json
-  def destroy
-    @calle.destroy
-
-    respond_to do |format|
-      format.html { redirect_to calles_url, notice: "Calle was successfully destroyed." }
-      format.json { head :no_content }
     end
   end
 

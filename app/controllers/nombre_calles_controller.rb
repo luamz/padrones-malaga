@@ -13,6 +13,7 @@ class NombreCallesController < ApplicationController
   # GET /nombre_calles/new
   def new
     @nombre_calle = NombreCalle.new
+    @barrio = params[:barrio] if params[:barrio].present?
     barrios = []
     Barrio.all.each {|barrio| barrios << barrio.nombre_barrio}
     @barrios = barrios

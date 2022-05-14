@@ -1,34 +1,31 @@
 <%= form_with(model: barrio, local: true) do |form| %>
-  <% if barrio.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(barrio.errors.count, "error") %> prohibited this barrio from being saved:</h2>
+  <div class="col-md-6 mx-auto">
+    <% if barrio.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(barrio.errors.count, "error") %> prohibited this barrio from being saved:</h2>
 
-      <ul>
-        <% barrio.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="col-md-8 mx-auto">
-    <div class="field col-md-8">
+        <ul>
+          <% barrio.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="field">
       <%= form.label :nombre_barrio, "Nombre", class:'form-label'%>
-      <div class="col-md-8">
+      <div class="col-md-12">
         <%= form.text_field :nombre_barrio, class:'form-control' %>
       </div>
     </div>
-  </div>
 
-  <div class="col-md-8 py-4 mx-auto">
     <div class="row">
-      <div class= "col-md-3">
+      <div class= "col-md-4">
         <%= form.submit class:"btn btn-success botoes" %>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-4">
         <%= link_to 'Volver', barrios_path, class:'btn btn-primary botoes text-white col-md-12' %>
       </div>
-      <div class=" col-md-3">
+      <div class=" col-md-4">
         <%= link_to 'Mostrar', @barrio, class:'btn btn-secondary botoes text-white col-md-12' %>
       </div>
     </div>

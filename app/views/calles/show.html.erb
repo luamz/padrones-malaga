@@ -1,18 +1,38 @@
-<p id="notice"><%= notice %></p>
-
-
-<div class="py-lg-8">
-  <div class="">
-    <div class="col-md-4">Nombre Principal:<h5><%= @calle.principal%></h5></div>
-    <div class="col-md-4">Barrio: <h5><%= @calle.barrio.nombre_barrio%></h5></div>
-    <div class="col-md-4">Otros Nombres: <h5><%= @calle.otros_nombres %></h5></div>
+<div class="col-md-8 mx-auto">
+  <p id="notice"><%= notice %></p>
+  <div class="pb-4">
+    <div class="col-md-6">Nombre Principal:<h1>Calle <%= @calle.principal%></h1></div>
+    <div class="col-md-6">Barrio: <h1><%= @calle.barrio.nombre_barrio%></h1></div>
   </div>
 
-  <div class="row">
-    <div class="col-md-2">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Todos los Nombres</th>
+      <th class="text-center">Año de Inicio</th>
+      <th class="text-center">Año de Fin</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @calle.nombres.each do |nombre_calle| %>
+      <tr>
+        <td class="col-md-2 "><%= link_to "#{nombre_calle.nombre_calle}", nombre_calle %></td>
+        <td class="col-md-1 text-center"><%= nombre_calle.ano_inicio %></td>
+        <td class="col-md-1 text-center"><%= nombre_calle.ano_fin %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+  <div class="row col-md-12">
+    <div class="col-md-3">
       <%= link_to 'Volver', calles_path, class:'btn btn-primary botoes text-white col-md-12' %>
     </div>
-    <div class=" col-md-2">
+    <div class= "col-md-3">
+      <%= link_to "Agregar Nombre", new_nombre_calle_nombre_calles_path(@calle), class:"btn btn-dark botoes text-white" %>
+    </div>
+    <div class=" col-md-3">
       <%= link_to 'Editar', edit_calle_path(@calle), class:'btn btn-secondary botoes text-white col-md-12' %>
     </div>
   </div>

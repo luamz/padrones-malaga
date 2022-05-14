@@ -19,24 +19,17 @@
     <tbody>
       <% @barrios.each do |barrio| %>
         <tr>
-          <td class="col-md-2"><%= link_to "#{barrio.nombre_barrio}", barrio %></td>
-          <td class="col-md-2 text-center"><%= barrio.num_calles %></td>
-          <td class="col-md-3">
-            <div class="row">
-              <div class="col-md-2">
-                <%= link_to edit_barrio_path(barrio) do %>
-                  <i class="fa fa-pencil"></i>
-                <% end %>
-              </div>
-              <div class="col-md-2">
-                <%= link_to barrio, method: :delete, data: { confirm: '¿Estas seguro?' } do %>
-                  <i class="fa fa-trash-can"></i>
-                <% end %>
-              </div>
-            </div>
+          <td class="col-md-4"><%= link_to "#{barrio.nombre_barrio}", barrio %></td>
+          <td class="col-md-4 text-center"><%= barrio.num_calles %></td>
+          <td class="col-md-2 text-center">
+            <%= link_to edit_barrio_path(barrio), class: 'btn btn-primary btn-xs text-white' do %>
+              <i class="fa fa-pencil"></i>
+              Editar
+            <% end %>
           </td>
         </tr>
       <% end %>
     </tbody>
   </table>
+  <%= paginate @barrios %>
 </div>

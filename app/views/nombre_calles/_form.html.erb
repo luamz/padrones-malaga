@@ -74,8 +74,12 @@
 
   <div class="col-md-6 py-4">
     <div class="row">
-      <div class= "col-md-4">
-        <%= form.submit "Agregar Nueva Calle", class:"btn btn-success botoes" %>
+      <div class= "col-md-5">
+        <% if action_name == 'new_nombre_calle' %>
+          <%= form.submit "Agregar Nuevo Nombre", class:"btn btn-success", style:"width:200px;" %>
+        <% else %>
+          <%= form.submit "Crear Calle", class:"btn btn-success botoes" %>
+        <% end %>
       </div>
       <div class="col-md-4">
         <%= link_to 'Volver', nombre_calles_path, class:'btn btn-primary botoes text-white col-md-12' %>

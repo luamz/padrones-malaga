@@ -1,9 +1,44 @@
-<p id="notice"><%= notice %></p>
+<div class="col-md-8 mx-auto">
+  <p id="notice"><%= notice %></p>
+  <div class="pb-2">
+    <div class="col-md-6">Barrio:<h1><%= @barrio.nombre_barrio%></h1></div>
+  </div>
 
-<p>
-  <strong>Nombre barrio:</strong>
-  <%= @barrio.nombre_barrio %>
-</p>
+  <table class="table table-striped col-md-2">
+    <thead>
+    <tr>
+      <th>Calles</th>
+      <th>Otros Nombres</th>
+    </tr>
+    </thead>
 
-<%= link_to 'Edit', edit_barrio_path(@barrio) %> |
-<%= link_to 'Back', barrios_path %>
+    <tbody>
+    <% @calles.each do |calle| %>
+      <tr>
+        <td class="col-md-2 "><%= link_to "#{calle.principal}", calle %></td>
+        <td class="col-md-4 "><%= calle.otros_nombres %></td>
+        <td class="col-md-1">
+          <%= link_to edit_calle_path(calle), class: 'btn btn-primary btn-xs text-white' do %>
+            <i class="fa fa-pencil"></i>
+            Editar
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <%= paginate @calles %>
+
+  <div class="row col-md-12">
+    <div class="col-md-3">
+      <%= link_to 'Volver', barrios_path, class:'btn btn-primary botoes text-white col-md-12' %>
+    </div>
+    <div class=" col-md-3">
+      <%= link_to 'Editar', edit_barrio_path(@barrio), class:'btn btn-secondary botoes text-white col-md-12' %>
+    </div>
+    <div class= "col-md-3">
+      <%= link_to "Agregar Calle", new_nombre_calle_path, class:"btn btn-dark botoes text-white" %>
+    </div>
+  </div>
+</div>
+

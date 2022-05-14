@@ -3,11 +3,14 @@ class BarriosController < ApplicationController
 
   # GET /barrios or /barrios.json
   def index
-    @barrios = Barrio.all
+    @barrios = Barrio.all.page(params[:page]).per(10)
+    @barrios.sort_by(&:nombre_barrio)
   end
 
   # GET /barrios/1 or /barrios/1.json
   def show
+    @calles = @barrio.calles.page(params[:page]).per(8)
+    @calles.sort_by(&:principal).sort_by(&:barrio)
   end
 
   # GET /barrios/new
@@ -52,7 +55,7 @@ class BarriosController < ApplicationController
     @barrio.destroy
 
     respond_to do |format|
-      format.html { redirect_to barrios_url, notice: "Barrio elimanado con éxito." }
+      format.html { redirect_to barrios_url, notice: "Barrio eliminado con éxito." }
       format.json { head :no_content }
     end
   end
