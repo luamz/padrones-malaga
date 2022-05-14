@@ -1,0 +1,34 @@
+<%= turbo_frame_tag "calles" do %>
+  <table  class="table table-striped">
+    <thead>
+    <tr>
+      <th>Barrio</th>
+      <th>Nombre Principal</th>
+      <th>Outros Nombres</th>
+    </tr>
+    </thead>
+
+
+    <tbody>
+    <% @calles.each do |calle| %>
+      <tr>
+        <td class="col-md-2"><%= calle.barrio.nombre_barrio %></td>
+        <td class="col-md-2"><%= link_to "#{calle.principal}", calle %></td>
+        <td class="col-md-4"><%= calle.otros_nombres %></td>
+        <td class="col-md-2">
+          <%= link_to new_nombre_calle_nombre_calles_path(calle), class: 'btn btn-dark btn-xs text-white' do %>
+            <i class="fa fa-plus"></i>
+            Agregar Nuevo Nombre
+          <% end %>
+        </td>
+        <td class="col-md-1">
+          <%= link_to edit_calle_path(calle), class: 'btn btn-primary btn-xs text-white' do %>
+            <i class="fa fa-pencil"></i>
+            Editar
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>

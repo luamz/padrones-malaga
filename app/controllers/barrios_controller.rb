@@ -3,7 +3,12 @@ class BarriosController < ApplicationController
 
   # GET /barrios or /barrios.json
   def index
-    @barrios = Barrio.all.page(params[:page]).per(10)
+    if params[:query].present?
+      @barrios = Barrio.where("nombre_barrio LIKE ?", "%#{params[:query]}%")
+                     .page(params[:page]).per(10)
+    else
+      @barrios = Barrio.all.page(params[:page]).per(10)
+    end
     @barrios.sort_by(&:nombre_barrio)
   end
 

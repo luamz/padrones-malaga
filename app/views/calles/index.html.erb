@@ -1,25 +1,38 @@
 <p id="notice"><%= notice %></p>
 
-<div class="row">
-  <div class="col-md-8"><h1>Calles</h1></div>
-  <div class="col-md-4 mt-2 row">
-    <div class="col-md-5"><%= link_to 'Nueva Calle', new_nombre_calle_path, class:'btn btn-success text-white' %></div>
-    <div class="col-md-5"><%= link_to 'Nuevo Barrio', new_barrio_path, class:'btn btn-primary text-white' %></div>
+
+<div class="col-md-8">
+  <h1>Calles</h1></div>
+  <div class="col-md-12 my-4 row">
+    <%= form_with(url: calles_path, local: true, method: :get) do |form| %>
+      <div class="row">
+        <div class="col-md-4">
+          <% if params[:query].present? %>
+            <%= form.text_field :query, class:"form-control",  value: params[:query], placeholder:"Nombre de la calle o barrio..."  %>
+          <% else %>
+              <%= form.text_field :query, class:"form-control",  placeholder:"Nombre de la calle o barrio..."  %>
+          <% end %>
+        </div>
+        <div class= "col-md-4">
+          <%= form.submit "Buscar", class:"btn btn-secondary botoes" %>
+        </div>
+        <div class="col-md-2"><%= link_to 'Nueva Calle', new_nombre_calle_path, class:'btn btn-success botoes text-white' %></div>
+        <div class="col-md-2"><%= link_to 'Nuevo Barrio', new_barrio_path, class:'btn btn-primary botoes text-white' %></div>
+      </div>
+    <% end %>
   </div>
 
-</div>
-
-<table  class="table table-striped">
-  <thead>
+  <% if @calles.present? %>
+    <table  class="table table-striped">
+    <thead>
     <tr>
       <th>Barrio</th>
       <th>Nombre Principal</th>
       <th>Outros Nombres</th>
     </tr>
-  </thead>
+    </thead>
 
-
-  <tbody>
+    <tbody>
     <% @calles.each do |calle| %>
       <tr>
         <td class="col-md-2"><%= calle.barrio.nombre_barrio %></td>
@@ -39,9 +52,12 @@
         </td>
       </tr>
     <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+  <% else %>
+    Ninguna calle encontrada
+  <% end %>
 
-<%= paginate @calles %>
-<br>
+  <%= paginate @calles %>
+</div>
 

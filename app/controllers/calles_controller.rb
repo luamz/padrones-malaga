@@ -3,7 +3,13 @@ class CallesController < ApplicationController
 
   # GET /calles or /calles.json
   def index
-    @calles = Calle.page(params[:page])
+    if params[:query].present?
+      @calles = Calle.where(nombres: NombreCalle.where("nombre_calle LIKE ?", "%#{params[:query]}%"))
+                     .or(Calle.where(barrio:Barrio.where("nombre_barrio LIKE ?", "%#{params[:query]}%")))
+                     .page(params[:page]).per(10)
+    else
+      @calles=Calle.all.page(params[:page]).per(10)
+    end
     @calles.sort_by(&:principal).sort_by(&:barrio)
   end
 

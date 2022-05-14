@@ -3,8 +3,13 @@ class DistritosController < ApplicationController
 
   # GET /distritos or /distritos.json
   def index
-    @distritos = Distrito.all.page(params[:page]).per(10)
-    @distritos.sort_by(&:nombre_distrito)
+    if params[:query].present?
+      @distritos = Distrito.where("nombre_distrito LIKE ?", "%#{params[:query]}%")
+                       .page(params[:page]).per(10)
+    else
+
+      @distritos = Distrito.all.page(params[:page]).per(10)
+    end
   end
 
   # GET /distritos/1 or /distritos/1.json

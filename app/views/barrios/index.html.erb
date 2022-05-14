@@ -3,20 +3,37 @@
 <div class="col-md-8 mx-auto">
   <div class="row">
     <div class="col-md-8"><h1>Barrios</h1></div>
-    <div class="col-md-4 mt-2">
-      <%= link_to 'Nuevo Barrio', new_barrio_path, class:'btn btn-success text-white' %>
+    <div class="col-md-12 my-4 row">
+      <%= form_with(url: barrios_path, local: true, method: :get) do |form| %>
+        <div class="row">
+          <div class="col-md-4">
+            <% if params[:query].present? %>
+              <%= form.text_field :query, class:"form-control", value: params[:query], placeholder:"Nombre del barrio..."  %>
+            <% else %>
+              <%= form.text_field :query, class:"form-control",  placeholder:"Nombre del barrio..."  %>
+            <% end %>
+          </div>
+          <div class= "col-md-4">
+            <%= form.submit "Buscar", class:"btn btn-secondary botoes" %>
+          </div>
+          <div class="col-md-4">
+            <%= link_to 'Nuevo Barrio', new_barrio_path, class:'btn btn-primary botoes text-white' %>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
 
-  <table class="table table-striped">
-    <thead>
+  <% if @barrios.present? %>
+    <table class="table table-striped">
+      <thead>
       <tr>
         <th>Nombre del Barrio</th>
         <th class="text-center">Número de Calles</th>
       </tr>
-    </thead>
+      </thead>
 
-    <tbody>
+      <tbody>
       <% @barrios.each do |barrio| %>
         <tr>
           <td class="col-md-4"><%= link_to "#{barrio.nombre_barrio}", barrio %></td>
@@ -29,7 +46,10 @@
           </td>
         </tr>
       <% end %>
-    </tbody>
-  </table>
+      </tbody>
+    </table>
+  <% else %>
+    Ningun barrio encontrado
+  <% end %>
   <%= paginate @barrios %>
 </div>
