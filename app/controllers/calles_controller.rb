@@ -6,11 +6,10 @@ class CallesController < ApplicationController
     if params[:query].present?
       @calles = Calle.where(nombres: NombreCalle.where("nombre_calle LIKE ?", "%#{params[:query]}%"))
                      .or(Calle.where(barrio:Barrio.where("nombre_barrio LIKE ?", "%#{params[:query]}%")))
-                     .page(params[:page]).per(10)
+                     .page(params[:page]).per(50)
     else
-      @calles=Calle.all.page(params[:page]).per(10)
+      @calles=Calle.all.page(params[:page]).per(50)
     end
-    @calles.sort_by(&:principal).sort_by(&:barrio)
   end
 
   # GET /calles/1 or /calles/1.json

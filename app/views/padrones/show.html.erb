@@ -1,9 +1,67 @@
-<p id="notice"><%= notice %></p>
+<div class="col-md-8 mx-auto">
+  <p id="notice"><%= notice %></p>
+  <div class="pb-4 row">
+    <div class="col-md-4">Padrón (Año):<h1><%= @padron.ano%></h1></div>
+    <div class="col-md-4">Distrito: <h1><%= @padron.distrito.nombre_distrito%></h1></div>
+    <div class="col-md-4 mt-2">
+      <%= link_to @padron.enlace, class: 'btn btn-success text-white', target: :_blank do %>
+        <i class="fa fa-eye"></i>
+        Ver Padrón
+      <% end %>
+    </div>
+  </div>
 
-<p>
-  <strong>Ano:</strong>
-  <%= @padron.ano %>
-</p>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Calle</th>
+      <th>Barrio</th>
+      <th class="text-center">Inicio</th>
+      <th class="text-center">Fin</th>
+    </tr>
+    </thead>
 
-<%= link_to 'Edit', edit_padron_path(@padron) %> |
-<%= link_to 'Back', padrones_path %>
+    <tbody>
+    <% @registros.each do |registro| %>
+      <tr>
+        <% if registro.nombre_calle.principal? %>
+          <td class="col-md-3 "><%= link_to "#{registro.nombre_calle.nombre_calle}", registro.nombre_calle.calle %></td>
+        <% else %>
+          <td class="col-md-3 "><%= link_to "#{registro.nombre_calle.nombre_calle} (#{registro.nombre_calle.calle.principal})", registro.nombre_calle.calle %></td>
+        <% end %>
+        <td class="col-md-3 "><%= registro.nombre_calle.calle.barrio.nombre_barrio %></td>
+        <td class="col-md-1 text-center"><%= registro.pagina_inicio %></td>
+        <td class="col-md-1 text-center"><%= registro.pagina_fin %></td>
+        <% if registro.enlace.present? %>
+          <td class="col-md-2 text-center">
+            <%= link_to registro.enlace, class: 'btn btn-success  btn-xs text-white', target: :_blank do %>
+              <i class="fa fa-eye"></i>
+              Ver Calle
+            <% end %>
+          </td>
+        <% else %>
+          <td class="col-md-2 text-center"></td>
+        <% end %>
+        <td class="col-md-2">
+          <%= link_to edit_registro_path(registro), class: 'btn btn-primary btn-xs text-white' do %>
+            <i class="fa fa-pencil"></i>
+            Editar
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+  <div class="row col-md-12">
+    <div class="col-md-3">
+      <%= link_to 'Volver', padrones_path, class:'btn btn-primary botoes text-white col-md-12' %>
+    </div>
+    <div class= "col-md-3">
+      <%= link_to "Agregar Registro", new_registros_path(@padron), class:"btn btn-dark botoes text-white" %>
+    </div>
+    <div class=" col-md-3">
+      <%= link_to 'Editar', edit_padron_path(@padron), class:'btn btn-secondary botoes text-white col-md-12' %>
+    </div>
+  </div>
+</div>

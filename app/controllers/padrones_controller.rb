@@ -8,6 +8,7 @@ class PadronesController < ApplicationController
 
   # GET /padrones/1 or /padrones/1.json
   def show
+    @registros = Registro.where(padron:@padron).all
   end
 
   # GET /padrones/new
@@ -20,6 +21,10 @@ class PadronesController < ApplicationController
 
   # GET /padrones/1/edit
   def edit
+    @distrito = @padron.distrito.nombre_distrito
+    distritos = []
+    Distrito.all.each {|distrito| distritos << distrito.nombre_distrito}
+    @distritos = distritos
   end
 
   # POST /padrones or /padrones.json
@@ -40,8 +45,9 @@ class PadronesController < ApplicationController
 
   # PATCH/PUT /padrones/1 or /padrones/1.json
   def update
+    @distrito = Distrito.find_by(nombre_distrito: padron_params[:distrito])
     respond_to do |format|
-      if @padron.update(padron_params)
+      if @padron.update(ano: padron_params[:ano], distrito: @distrito)
         format.html { redirect_to padron_url(@padron), notice: "Padron was successfully updated." }
         format.json { render :show, status: :ok, location: @padron }
       else

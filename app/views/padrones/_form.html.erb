@@ -17,12 +17,21 @@
         <%= form.text_field :ano, class:'form-control' %>
       </div>
     </div>
-    <div class="field">
-      <%= form.label :distrito, "Distrito", class:'form-label' %>
-      <div class="col-md-12">
-      <%= form.select :distrito, options_for_select(@distritos), {}, class:'form-select' %>
+    <% if @distrito.present? %>
+      <div class="field">
+        <%= form.label :distrito, "Distrito", class:'form-label' %>
+        <div class="col-md-12">
+          <%= form.select :distrito, options_for_select(@distritos, @distrito), {}, class:'form-select' %>
+        </div>
       </div>
-    </div>
+    <% else %>
+      <div class="field">
+        <%= form.label :distrito, "Distrito", class:'form-label' %>
+        <div class="col-md-12">
+          <%= form.select :distrito, options_for_select(@distritos), {}, class:'form-select' %>
+        </div>
+      </div>
+    <% end %>
 
 
     <div class="row">

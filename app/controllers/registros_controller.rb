@@ -34,7 +34,7 @@ class RegistrosController < ApplicationController
 
     respond_to do |format|
       if @registro.save
-        format.html { redirect_to registro_url(@registro), notice: "Registro was successfully created." }
+        format.html { redirect_to padron_url(@registro.padron), notice: "Nuevo registro creado con éxito." }
         format.json { render :show, status: :created, location: @registro }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -47,7 +47,7 @@ class RegistrosController < ApplicationController
   def update
     respond_to do |format|
       if @registro.update(registro_params)
-        format.html { redirect_to registro_url(@registro), notice: "Registro was successfully updated." }
+        format.html { redirect_to padron_url(@registro.padron), notice: "Registro actualizado con éxito." }
         format.json { render :show, status: :ok, location: @registro }
       else
         format.html { render :edit, status: :unprocessable_entity }
