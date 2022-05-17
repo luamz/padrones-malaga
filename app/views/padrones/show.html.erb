@@ -1,12 +1,18 @@
 <div class="col-md-8 mx-auto">
   <p id="notice"><%= notice %></p>
   <div class="pb-4 row">
-    <div class="col-md-4">Padrón (Año):<h1><%= @padron.ano%></h1></div>
-    <div class="col-md-4">Distrito: <h1><%= @padron.distrito.nombre_distrito%></h1></div>
-    <div class="col-md-4 mt-2">
+    <div class="col-md-3">Padrón (Año):<h1><%= @padron.ano%></h1></div>
+    <div class="col-md-3">Distrito: <h1><%= @padron.distrito.nombre_distrito%></h1></div>
+    <div class="col-md-3 mt-2">
       <%= link_to @padron.enlace, class: 'btn btn-success text-white', target: :_blank do %>
         <i class="fa fa-eye"></i>
         Ver Padrón
+      <% end %>
+    </div>
+    <div class= "col-md-3 mt-2">
+      <%= link_to new_registros_path(@padron), class:"btn btn-dark text-white" do %>
+        <i class="fa fa-plus"></i>
+        Agregar Registro
       <% end %>
     </div>
   </div>
@@ -25,23 +31,13 @@
     <% @registros.each do |registro| %>
       <tr>
         <% if registro.nombre_calle.principal? %>
-          <td class="col-md-3 "><%= link_to "#{registro.nombre_calle.nombre_calle}", registro.nombre_calle.calle %></td>
+          <td class="col-md-4 "><%= link_to "#{registro.nombre_calle.nombre_calle}", registro.nombre_calle.calle %></td>
         <% else %>
-          <td class="col-md-3 "><%= link_to "#{registro.nombre_calle.nombre_calle} (#{registro.nombre_calle.calle.principal})", registro.nombre_calle.calle %></td>
+          <td class="col-md-4 "><%= link_to "#{registro.nombre_calle.nombre_calle} (#{registro.nombre_calle.calle.principal})", registro.nombre_calle.calle %></td>
         <% end %>
         <td class="col-md-3 "><%= registro.nombre_calle.calle.barrio.nombre_barrio %></td>
         <td class="col-md-1 text-center"><%= registro.pagina_inicio %></td>
         <td class="col-md-1 text-center"><%= registro.pagina_fin %></td>
-        <% if registro.enlace.present? %>
-          <td class="col-md-2 text-center">
-            <%= link_to registro.enlace, class: 'btn btn-success  btn-xs text-white', target: :_blank do %>
-              <i class="fa fa-eye"></i>
-              Ver Calle
-            <% end %>
-          </td>
-        <% else %>
-          <td class="col-md-2 text-center"></td>
-        <% end %>
         <td class="col-md-2">
           <%= link_to edit_registro_path(registro), class: 'btn btn-primary btn-xs text-white' do %>
             <i class="fa fa-pencil"></i>
@@ -54,14 +50,17 @@
   </table>
 
   <div class="row col-md-12">
-    <div class="col-md-3">
-      <%= link_to 'Volver', padrones_path, class:'btn btn-primary botoes text-white col-md-12' %>
-    </div>
     <div class= "col-md-3">
-      <%= link_to "Agregar Registro", new_registros_path(@padron), class:"btn btn-dark botoes text-white" %>
+      <%= link_to new_registros_path(@padron), class:"btn btn-dark botoes text-white" do %>
+        <i class="fa fa-plus"></i>
+        Agregar Registro
+      <% end %>
     </div>
     <div class=" col-md-3">
       <%= link_to 'Editar', edit_padron_path(@padron), class:'btn btn-secondary botoes text-white col-md-12' %>
+    </div>
+    <div class="col-md-3">
+      <%= link_to 'Volver', padrones_path, class:'btn btn-primary botoes text-white col-md-12' %>
     </div>
   </div>
 </div>

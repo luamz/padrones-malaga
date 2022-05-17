@@ -1,8 +1,8 @@
 <div class="col-md-8 mx-auto">
   <p id="notice"><%= notice %></p>
-  <div class="pb-4">
-    <div class="col-md-6">Nombre Principal:<h1>Calle <%= @calle.principal%></h1></div>
-    <div class="col-md-6">Barrio: <h1><%= @calle.barrio.nombre_barrio%></h1></div>
+  <div class="pb-4 row">
+    <div class="col-md-6">Nombre Principal:<h2>Calle <%= @calle.principal%></h2></div>
+    <div class="col-md-6">Barrio: <h2><%= @calle.barrio.nombre_barrio%></h2></div>
   </div>
 
   <table class="table table-striped">
@@ -20,6 +20,34 @@
         <td class="col-md-2 "><%= link_to "#{nombre_calle.nombre_calle}", nombre_calle %></td>
         <td class="col-md-1 text-center"><%= nombre_calle.ano_inicio %></td>
         <td class="col-md-1 text-center"><%= nombre_calle.ano_fin %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Registros</th>
+      <th class="text-center">Distrito</th>
+      <th class="text-center">Inicio</th>
+      <th class="text-center">Fin</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @registros.each do |registro| %>
+      <tr>
+        <td class="col-md-1"><%= link_to "#{registro.padron.ano}", registro.padron %></td>
+        <td class="col-md-1 text-center"><%= link_to "#{registro.padron.distrito.nombre_distrito}", registro.padron.distrito %></td>
+        <td class="col-md-1 text-center"><%= registro.pagina_inicio %></td>
+        <td class="col-md-1 text-center"><%= registro.pagina_fin %></td>
+        <td class="col-md-1 text-center">
+          <%= link_to registro.padron.enlace, class: 'btn btn-success btn-xs text-white', target: :_blank do %>
+            <i class="fa fa-eye"></i>
+            Ver Padrón
+          <% end %>
+        </td>
       </tr>
     <% end %>
     </tbody>

@@ -9,6 +9,9 @@ es:
         update: "Actualizar Registro"
       calle:
         update: "Actualizar Calle"
+      padron:
+        create: "Crear Padrón"
+        update: "Actualizar Padrón"
 
     page_entries_info:
       more_pages:

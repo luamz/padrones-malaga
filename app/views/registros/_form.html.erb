@@ -26,7 +26,11 @@
 
     <div class="col-md-10 my-2">
       <%= form.label :nombre_calle_id, "Calle", class:'form-label' %>
-      <%= form.select :nombre_calle, options_for_select(@nombres_calles), {}, class:'form-select' %>
+      <% if @nombre_calle.present? %>
+        <%= form.select :nombre_calle, options_for_select(@nombres_calles, @nombre_calle), {}, class:'form-select' %>
+    <% else %>
+        <%= form.select :nombre_calle, options_for_select(@nombres_calles), {}, class:'form-select' %>
+    <% end %>
     </div>
 
     <div class="row">
@@ -42,10 +46,10 @@
           <%= form.text_field :pagina_fin, class:'form-control' %>
         </div>
       </div>
-      <div class="field col-md-10">
-        <%= form.label :enlace, 'Enlace', class:'form-label' %>
-        <%= form.text_field :enlace, class:'form-control' %>
-      </div>
+      <!-- <div class="field col-md-10">-->
+        <%#= form.label :enlace, 'Enlace', class:'form-label' %>
+        <%#= form.text_field :enlace, class:'form-control' %>
+      <!-- </div>-->
     </div>
 
     <div class="col-md-8 py-4">
@@ -54,7 +58,7 @@
           <%= form.submit class:"btn btn-success", style:"width:200px;" %>
         </div>
         <div class="col-md-6">
-          <%= link_to 'Volver', nombre_calles_path, class:'btn btn-primary botoes text-white col-md-12' %>
+          <%= link_to 'Volver', padron_path(@padron_y_distrito), class:'btn btn-primary botoes text-white col-md-12' %>
         </div>
       </div>
     </div>

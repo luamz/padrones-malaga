@@ -14,6 +14,7 @@ class CallesController < ApplicationController
 
   # GET /calles/1 or /calles/1.json
   def show
+    @registros = Registro.where(nombre_calle: NombreCalle.where(calle: @calle)).all
   end
 
 

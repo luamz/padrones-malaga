@@ -14,15 +14,21 @@
         <th>Año</th>
         <th class="text-center">Distrito</th>
         <th class="text-center">Registros</th>
+        <th class="text-center">Completo</th>
       </tr>
     </thead>
 
     <tbody>
       <% @padrones.each do |padron| %>
         <tr>
-          <td class="col-md-2"><%= link_to "#{padron.ano}", padron %></td>
+          <td class="col-md-1"><%= link_to "#{padron.ano}", padron %></td>
           <td class="col-md-2 text-center"><%= link_to "#{padron.distrito.nombre_distrito}", padron.distrito %></td>
-          <td class="col-md-2 text-center"><%= padron.num_registros %></td>
+          <td class="col-md-1 text-center"><%= padron.num_registros %></td>
+          <% if padron.terminado? %>
+            <td class="col-md-2 text-center"> <i class="fa fa-check"></i></td>
+          <% else %>
+            <td class="col-md-2 text-center"> <i class="fa fa-x"></i></td>
+          <% end %>
           <td class="col-md-2">
             <%= link_to new_registros_path(padron.id), class: 'btn btn-dark btn-xs text-white' do %>
               <i class="fa fa-plus"></i>

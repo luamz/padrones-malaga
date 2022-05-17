@@ -16,11 +16,17 @@ class RegistrosController < ApplicationController
     @padron_y_distrito = Padron.find(params[:padron_id])
     nombres_calles = []
     NombreCalle.all.each {|nombre_calle| nombres_calles << nombre_calle.nombre_calle}
-    @nombres_calles = nombres_calles
+    @nombres_calles = nombres_calles.sort
   end
 
   # GET /registros/1/edit
   def edit
+    @padron_y_distrito = @registro.padron
+    @nombre_calle = @registro.nombre_calle.nombre_calle
+    nombres_calles = []
+    NombreCalle.all.each {|nombre_calle| nombres_calles << nombre_calle.nombre_calle}
+    @nombres_calles = nombres_calles
+
   end
 
   # POST /registros or /registros.json
@@ -34,7 +40,7 @@ class RegistrosController < ApplicationController
 
     respond_to do |format|
       if @registro.save
-        format.html { redirect_to padron_url(@registro.padron), notice: "Nuevo registro creado con éxito." }
+        format.html { redirect_to new_registros_path(@registro.padron), notice: "Nuevo registro creado con éxito." }
         format.json { render :show, status: :created, location: @registro }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -45,8 +51,12 @@ class RegistrosController < ApplicationController
 
   # PATCH/PUT /registros/1 or /registros/1.json
   def update
+    nombre_calle = NombreCalle.find_by(nombre_calle: registro_params[:nombre_calle]) if registro_params[:nombre_calle]
     respond_to do |format|
-      if @registro.update(registro_params)
+      if @registro.update(nombre_calle: nombre_calle,
+                          pagina_inicio:registro_params[:pagina_inicio],
+                          pagina_fin: registro_params[:pagina_fin],
+                          enlace: registro_params[:enlace])
         format.html { redirect_to padron_url(@registro.padron), notice: "Registro actualizado con éxito." }
         format.json { render :show, status: :ok, location: @registro }
       else
