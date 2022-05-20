@@ -34,6 +34,20 @@
     <% end %>
 
     <div class="field">
+      <%= form.label :enlace, "Enlace", class:'form-label'%>
+      <div class="col-md-12">
+        <%= form.text_field :enlace, class:'form-control' %>
+      </div>
+    </div>
+
+    <div class="field">
+      <%= form.label :enlace2, "Enlace 2", class:'form-label'%>
+      <div class="col-md-12">
+        <%= form.text_field :enlace2, class:'form-control' %>
+      </div>
+    </div>
+
+    <div class="field">
       <%= form.label :terminado, "Completo?", class:'form-label px-2' %>
       <%= form.check_box :terminado %>
     </div>

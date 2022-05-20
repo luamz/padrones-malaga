@@ -36,7 +36,8 @@ class RegistrosController < ApplicationController
                              nombre_calle: nombre_calle,
                              pagina_inicio: registro_params[:pagina_inicio],
                              pagina_fin: registro_params[:pagina_fin],
-                             enlace: registro_params[:enlace])
+                             enlace: registro_params[:enlace],
+                             parte: registro_params[:parte])
 
     respond_to do |format|
       if @registro.save
@@ -56,7 +57,8 @@ class RegistrosController < ApplicationController
       if @registro.update(nombre_calle: nombre_calle,
                           pagina_inicio:registro_params[:pagina_inicio],
                           pagina_fin: registro_params[:pagina_fin],
-                          enlace: registro_params[:enlace])
+                          enlace: registro_params[:enlace],
+                          parte: registro_params[:parte])
         format.html { redirect_to padron_url(@registro.padron), notice: "Registro actualizado con éxito." }
         format.json { render :show, status: :ok, location: @registro }
       else
@@ -84,6 +86,6 @@ class RegistrosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def registro_params
-      params.require(:registro).permit(:pagina_inicio, :pagina_fin, :enlace, :nombre_calle, :padron_id)
+      params.require(:registro).permit(:pagina_inicio, :pagina_fin, :enlace, :nombre_calle, :padron_id, :parte)
     end
 end

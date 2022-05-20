@@ -30,7 +30,9 @@ class PadronesController < ApplicationController
   # POST /padrones or /padrones.json
   def create
     @distrito = Distrito.find_by(nombre_distrito: padron_params[:distrito])
-    @padron = Padron.new(ano: padron_params[:ano], distrito: @distrito, terminado: padron_params[:terminado])
+    @padron = Padron.new(ano: padron_params[:ano], distrito: @distrito,
+                         terminado: padron_params[:terminado], enlace:padron_params[:enlace],
+                         enlace2: padron_params[:enlace2])
 
     respond_to do |format|
       if @padron.save
@@ -47,7 +49,9 @@ class PadronesController < ApplicationController
   def update
     @distrito = Distrito.find_by(nombre_distrito: padron_params[:distrito])
     respond_to do |format|
-      if @padron.update(ano: padron_params[:ano], distrito: @distrito, terminado: padron_params[:terminado])
+      if @padron.update(ano: padron_params[:ano], distrito: @distrito,
+                        terminado: padron_params[:terminado], enlace: padron_params[:enlace],
+                        enlace2: padron_params[:enlace2])
         format.html { redirect_to padron_url(@padron), notice: "Padron was successfully updated." }
         format.json { render :show, status: :ok, location: @padron }
       else
@@ -75,6 +79,6 @@ class PadronesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def padron_params
-      params.require(:padron).permit(:ano, :distrito, :terminado)
+      params.require(:padron).permit(:ano, :distrito, :terminado, :enlace, :enlace2)
     end
 end

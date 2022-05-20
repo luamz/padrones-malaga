@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 2022_05_17_001844) do
     t.datetime "updated_at", precision: 6, null: false
     t.text "enlace"
     t.boolean "terminado"
+    t.text "enlace2"
     t.index ["distrito_id"], name: "index_padrones_on_distrito_id"
   end
 
@@ -62,6 +63,7 @@ ActiveRecord::Schema.define(version: 2022_05_17_001844) do
     t.bigint "padron_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "parte"
     t.index ["padron_id"], name: "index_registros_on_padron_id"
   end
 
