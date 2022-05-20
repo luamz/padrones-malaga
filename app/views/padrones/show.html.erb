@@ -58,12 +58,7 @@
         <% end %>
         <td class="col-md-1 text-center"><%= registro.pagina_inicio %></td>
         <td class="col-md-1 text-center"><%= registro.pagina_fin %></td>
-        <td class="col-md-1">
-          <%= link_to new_casa_path, registro_id:registro.id, class: 'btn btn-success btn-xs text-white' do %>
-            <i class="fa fa-plus"></i>
-            Nueva Casa
-          <% end %>
-        </td>
+
         <td class="col-md-1">
           <%= link_to edit_registro_path(registro), class: 'btn btn-primary btn-xs text-white' do %>
             <i class="fa fa-pencil"></i>
