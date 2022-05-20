@@ -1,37 +1,83 @@
 <%= form_with(model: residencia, local: true) do |form| %>
-  <% if residencia.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(residencia.errors.count, "error") %> prohibited this residencia from being saved:</h2>
+  <div class="col-md-6 mx-auto">
+    <% if residencia.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(residencia.errors.count, "error") %> prohibited this residencia from being saved:</h2>
 
-      <ul>
-        <% residencia.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+        <ul>
+          <% residencia.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="row">
+      <div class="field col-md-6">
+        <%= form.label :ano, class:'form-label'%>
+        <%= form.text_field :ano, value:@registro.padron.ano, readonly:true, class:'form-control' %>
+      </div>
+
+      <div class="field col-md-6">
+        <%= form.label :distrito, class:'form-label'%>
+        <%= form.text_field :distrito, value:@registro.padron.distrito.nombre_distrito, readonly:true, class:'form-control' %>
+      </div>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= form.label :registro_id %>
-    <%= form.text_field :registro_id %>
-  </div>
+    <div class="field">
+      <%= form.label :calle, class:'form-label'%>
+      <%= form.text_field :calle, value:@registro.nombre_calle.nombre_calle, readonly:true, class:'form-control' %>
+    </div>
 
-  <div class="field">
-    <%= form.label :numero %>
-    <%= form.text_field :numero %>
-  </div>
+    <div class="row">
+      <div class="field col-md-2">
+        <%= form.label :pagina, "Página", class:'form-label'%>
+        <div class="col-md-12">
+          <%= form.text_field :pagina, class:'form-control' %>
+        </div>
+      </div>
+      <div class="field col-md-10">
+        <%= form.label :observaciones, "Observaciones", class:'form-label'%>
+        <div class="col-md-12">
+          <%= form.text_field :observaciones, class:'form-control' %>
+        </div>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :piso %>
-    <%= form.text_field :piso %>
-  </div>
 
-  <div class="field">
-    <%= form.label :dpto %>
-    <%= form.text_field :dpto %>
-  </div>
+    <%= form.hidden_field :registro_id, value: @registro.id %>
 
-  <div class="actions">
-    <%= form.submit %>
+    <div class="row">
+      <div class="field col-md-4">
+        <%= form.label :numero, "Número", class:'form-label'%>
+        <div class="col-md-12">
+          <%= form.text_field :numero, class:'form-control' %>
+        </div>
+      </div>
+      <div class="field col-md-4">
+        <%= form.label :piso, "Piso", class:'form-label'%>
+        <div class="col-md-12">
+          <%= form.text_field :piso, class:'form-control' %>
+        </div>
+      </div>
+      <div class="field col-md-4">
+        <%= form.label :dpto, "Departamento", class:'form-label'%>
+        <div class="col-md-12">
+          <%= form.text_field :dpto, class:'form-control' %>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row pt-2">
+      <div class= "col-md-4">
+        <%= form.submit class:"btn btn-success botoes" %>
+      </div>
+      <div class="col-md-4">
+        <%= link_to 'Volver', @registro.padron, class:'btn btn-primary botoes text-white col-md-12' %>
+      </div>
+    </div>
   </div>
 <% end %>
+
+

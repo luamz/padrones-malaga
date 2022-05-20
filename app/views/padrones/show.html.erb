@@ -60,6 +60,12 @@
         <td class="col-md-1 text-center"><%= registro.pagina_fin %></td>
 
         <td class="col-md-1">
+          <%= link_to new_residencias_path(registro.id), class: 'btn btn-success btn-xs text-white' do %>
+            <i class="fa fa-pencil"></i>
+            Nueva Residencia
+          <% end %>
+        </td>
+        <td class="col-md-1">
           <%= link_to edit_registro_path(registro), class: 'btn btn-primary btn-xs text-white' do %>
             <i class="fa fa-pencil"></i>
             Editar

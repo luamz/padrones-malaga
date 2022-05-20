@@ -1,6 +1,4 @@
 es:
-  date:
-    order: [ "day", "month", "year" ]
   helpers:
     submit:
       barrio:
@@ -14,6 +12,9 @@ es:
       padron:
         create: "Crear Padrón"
         update: "Actualizar Padrón"
+      residencia:
+        create: "Crear Residencia"
+        update: "Actualizar Residencia"
 
     page_entries_info:
       more_pages:

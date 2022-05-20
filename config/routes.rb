@@ -8,6 +8,11 @@ Rails.application.routes.draw do
   resources :registros do
     get '/new/:padron_id', to: 'registros#new', on: :collection, as: 'new'
   end
+
+  resources :residencias do
+    get '/new/:registro_id', to: 'residencias#new', on: :collection, as: 'new'
+  end
+
   resources :nombre_calles do
     get '/new_nombre_calle/:calle_id', to: 'nombre_calles#new_nombre_calle', on: :collection, as: 'new_nombre_calle'
   end

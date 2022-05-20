@@ -12,6 +12,7 @@ class ResidenciasController < ApplicationController
 
   # GET /residencias/new
   def new
+    @registro = Registro.find(params[:registro_id])
     @residencia = Residencia.new
   end
 
@@ -65,6 +66,6 @@ class ResidenciasController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def residencia_params
-      params.require(:residencia).permit(:registro_id, :numero, :piso, :dpto)
+      params.require(:residencia).permit(:registro_id, :numero, :piso, :dpto, :pagina, :observaciones)
     end
 end
