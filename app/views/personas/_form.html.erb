@@ -1,0 +1,77 @@
+<%= form_with(model: persona, local: true) do |form| %>
+  <% if persona.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(persona.errors.count, "error") %> prohibited this persona from being saved:</h2>
+
+      <ul>
+        <% persona.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :nombre %>
+    <%= form.text_field :nombre %>
+  </div>
+
+  <div class="field">
+    <%= form.label :apellido1 %>
+    <%= form.text_field :apellido1 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :apellido2 %>
+    <%= form.text_field :apellido2 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nacimiento %>
+    <%= form.text_field :nacimiento %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ciudad_nacimiento %>
+    <%= form.text_field :ciudad_nacimiento %>
+  </div>
+
+  <div class="field">
+    <%= form.label :confirmacion_nacimiento %>
+    <%= form.check_box :confirmacion_nacimiento %>
+  </div>
+
+  <div class="field">
+    <%= form.label :defuncion %>
+    <%= form.text_field :defuncion %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ciudad_defuncion %>
+    <%= form.text_field :ciudad_defuncion %>
+  </div>
+
+  <div class="field">
+    <%= form.label :confirmacion_defuncion %>
+    <%= form.check_box :confirmacion_defuncion %>
+  </div>
+
+  <div class="field">
+    <%= form.label :bautismo %>
+    <%= form.text_field :bautismo %>
+  </div>
+
+  <div class="field">
+    <%= form.label :parroquia %>
+    <%= form.text_field :parroquia %>
+  </div>
+
+  <div class="field">
+    <%= form.label :confirmacion_bautismo %>
+    <%= form.check_box :confirmacion_bautismo %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

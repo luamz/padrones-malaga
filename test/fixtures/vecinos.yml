@@ -1,0 +1,51 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  residencia: one
+  persona: one
+  edad: MyString
+  ocupacion: 
+  pueblo_naturaleza: MyString
+  provincia_naturaleza: MyString
+  parroquia: MyString
+  estado: MyString
+  tiempo_residencia: MyString
+  residencia_habitual: MyString
+  dia_nacimiento: 1
+  mes_nacimiento: MyString
+  ano_nacimiento: MyString
+  classificacion: MyString
+  contrib_anual: MyString
+  sueldo_anual: MyString
+  alquiler: MyString
+  sabe_leer: false
+  sabe_escribir: false
+  religion: MyString
+  defectos: MyString
+  ano_nacimiento_estimado: 1
+  ano_llegada_estimado: 1
+
+two:
+  residencia: two
+  persona: two
+  edad: MyString
+  ocupacion: 
+  pueblo_naturaleza: MyString
+  provincia_naturaleza: MyString
+  parroquia: MyString
+  estado: MyString
+  tiempo_residencia: MyString
+  residencia_habitual: MyString
+  dia_nacimiento: 1
+  mes_nacimiento: MyString
+  ano_nacimiento: MyString
+  classificacion: MyString
+  contrib_anual: MyString
+  sueldo_anual: MyString
+  alquiler: MyString
+  sabe_leer: false
+  sabe_escribir: false
+  religion: MyString
+  defectos: MyString
+  ano_nacimiento_estimado: 1
+  ano_llegada_estimado: 1

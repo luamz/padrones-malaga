@@ -1,0 +1,71 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Vecinos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Residencia</th>
+      <th>Persona</th>
+      <th>Edad</th>
+      <th>Ocupacion</th>
+      <th>Pueblo naturaleza</th>
+      <th>Provincia naturaleza</th>
+      <th>Parroquia</th>
+      <th>Estado</th>
+      <th>Tiempo residencia</th>
+      <th>Residencia habitual</th>
+      <th>Dia nacimiento</th>
+      <th>Mes nacimiento</th>
+      <th>Ano nacimiento</th>
+      <th>Classificacion</th>
+      <th>Contrib anual</th>
+      <th>Sueldo anual</th>
+      <th>Alquiler</th>
+      <th>Sabe leer</th>
+      <th>Sabe escribir</th>
+      <th>Religion</th>
+      <th>Defectos</th>
+      <th>Ano nacimiento estimado</th>
+      <th>Ano llegada estimado</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @vecinos.each do |vecino| %>
+      <tr>
+        <td><%= vecino.residencia_id %></td>
+        <td><%= vecino.persona_id %></td>
+        <td><%= vecino.edad %></td>
+        <td><%= vecino.ocupacion %></td>
+        <td><%= vecino.pueblo_naturaleza %></td>
+        <td><%= vecino.provincia_naturaleza %></td>
+        <td><%= vecino.parroquia %></td>
+        <td><%= vecino.estado %></td>
+        <td><%= vecino.tiempo_residencia %></td>
+        <td><%= vecino.residencia_habitual %></td>
+        <td><%= vecino.dia_nacimiento %></td>
+        <td><%= vecino.mes_nacimiento %></td>
+        <td><%= vecino.ano_nacimiento %></td>
+        <td><%= vecino.classificacion %></td>
+        <td><%= vecino.contrib_anual %></td>
+        <td><%= vecino.sueldo_anual %></td>
+        <td><%= vecino.alquiler %></td>
+        <td><%= vecino.sabe_leer %></td>
+        <td><%= vecino.sabe_escribir %></td>
+        <td><%= vecino.religion %></td>
+        <td><%= vecino.defectos %></td>
+        <td><%= vecino.ano_nacimiento_estimado %></td>
+        <td><%= vecino.ano_llegada_estimado %></td>
+        <td><%= link_to 'Show', vecino %></td>
+        <td><%= link_to 'Edit', edit_vecino_path(vecino) %></td>
+        <td><%= link_to 'Destroy', vecino, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Vecino', new_vecino_path %>

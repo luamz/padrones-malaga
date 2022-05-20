@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Registro:</strong>
+  <%= @residencia.registro_id %>
+</p>
+
+<p>
+  <strong>Numero:</strong>
+  <%= @residencia.numero %>
+</p>
+
+<p>
+  <strong>Piso:</strong>
+  <%= @residencia.piso %>
+</p>
+
+<p>
+  <strong>Dpto:</strong>
+  <%= @residencia.dpto %>
+</p>
+
+<%= link_to 'Edit', edit_residencia_path(@residencia) %> |
+<%= link_to 'Back', residencias_path %>

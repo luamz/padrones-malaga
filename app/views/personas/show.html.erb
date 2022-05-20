@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @persona.nombre %>
+</p>
+
+<p>
+  <strong>Apellido1:</strong>
+  <%= @persona.apellido1 %>
+</p>
+
+<p>
+  <strong>Apellido2:</strong>
+  <%= @persona.apellido2 %>
+</p>
+
+<p>
+  <strong>Nacimiento:</strong>
+  <%= @persona.nacimiento %>
+</p>
+
+<p>
+  <strong>Ciudad nacimiento:</strong>
+  <%= @persona.ciudad_nacimiento %>
+</p>
+
+<p>
+  <strong>Confirmacion nacimiento:</strong>
+  <%= @persona.confirmacion_nacimiento %>
+</p>
+
+<p>
+  <strong>Defuncion:</strong>
+  <%= @persona.defuncion %>
+</p>
+
+<p>
+  <strong>Ciudad defuncion:</strong>
+  <%= @persona.ciudad_defuncion %>
+</p>
+
+<p>
+  <strong>Confirmacion defuncion:</strong>
+  <%= @persona.confirmacion_defuncion %>
+</p>
+
+<p>
+  <strong>Bautismo:</strong>
+  <%= @persona.bautismo %>
+</p>
+
+<p>
+  <strong>Parroquia:</strong>
+  <%= @persona.parroquia %>
+</p>
+
+<p>
+  <strong>Confirmacion bautismo:</strong>
+  <%= @persona.confirmacion_bautismo %>
+</p>
+
+<%= link_to 'Edit', edit_persona_path(@persona) %> |
+<%= link_to 'Back', personas_path %>

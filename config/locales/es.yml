@@ -1,4 +1,6 @@
 es:
+  date:
+    order: [ "day", "month", "year" ]
   helpers:
     submit:
       barrio:

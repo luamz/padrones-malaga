@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  registro: one
+  numero: MyString
+  piso: MyString
+  dpto: MyString
+
+two:
+  registro: two
+  numero: MyString
+  piso: MyString
+  dpto: MyString

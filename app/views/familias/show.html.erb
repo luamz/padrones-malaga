@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Apellidos:</strong>
+  <%= @familia.apellidos %>
+
+  <% @familia.personas.each do |persona| %>
+    <h2><%= persona.nombre_completo%></h2>
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_familia_path(@familia) %> |
+<%= link_to 'Back', familias_path %>

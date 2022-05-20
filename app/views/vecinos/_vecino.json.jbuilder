@@ -1,0 +1,2 @@
+json.extract! vecino, :id, :residencia_id, :persona_id, :edad, :ocupacion, :pueblo_naturaleza, :provincia_naturaleza, :parroquia, :estado, :tiempo_residencia, :residencia_habitual, :dia_nacimiento, :mes_nacimiento, :ano_nacimiento, :classificacion, :contrib_anual, :sueldo_anual, :alquiler, :sabe_leer, :sabe_escribir, :religion, :defectos, :ano_nacimiento_estimado, :ano_llegada_estimado, :created_at, :updated_at
+json.url vecino_url(vecino, format: :json)

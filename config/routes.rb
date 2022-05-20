@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :vecinos
+  resources :residencias
+  resources :personas
+  resources :familias
   root to: 'padrones#index'
 
   resources :registros do
