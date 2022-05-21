@@ -3,9 +3,8 @@ class Residencia < ApplicationRecord
   has_many :vecinos
   delegate :nombre_calle, to: :registro
   delegate :nombre, to: :nombre_calle
-  delegate :padron, to: :registro
-  delegate :ano, to: :padron
-  delegate :distrito, to: :padron
+  delegate :ano, to: :registro
+  delegate :distrito, to: :registro
   delegate :nombre_distrito, to: :distrito
 
 
