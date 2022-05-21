@@ -13,10 +13,12 @@ class VecinosController < ApplicationController
   # GET /vecinos/new
   def new
     @vecino = Vecino.new
+    @residencia = Residencia.find(params[:residencia_id])
   end
 
   # GET /vecinos/1/edit
   def edit
+    @residencia = Residencia.find(params[:id])
   end
 
   # POST /vecinos or /vecinos.json

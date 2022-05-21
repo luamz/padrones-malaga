@@ -18,6 +18,7 @@ class ResidenciasController < ApplicationController
 
   # GET /residencias/1/edit
   def edit
+    @registro = Registro.find(params[:id])
   end
 
   # POST /residencias or /residencias.json

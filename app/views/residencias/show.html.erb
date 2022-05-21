@@ -1,24 +1,50 @@
-<p id="notice"><%= notice %></p>
+<div class="col-md-10 mx-auto">
+  <p id="notice"><%= notice %></p>
+  <div class="pb-4 row">
+    <div class="col-md-2">Año:<h2><%= @residencia.ano%></h2></div>
+    <div class="col-md-2">Distrito:<h2><%= @residencia.nombre_distrito%></h2></div>
+    <div class="col-md-4">Calle:<h2><%= @residencia.nombre%></h2></div>
+    <div class="col-md-1 text-center">Número: <h2><%= @residencia.numero%></h2></div>
+    <div class="col-md-1 text-center">Piso: <h2><%= @residencia.piso%></h2></div>
+    <div class="col-md-1 text-center">Departamento: <h2><%= @residencia.dpto%></h2></div>
+  </div>
 
-<p>
-  <strong>Registro:</strong>
-  <%= @residencia.registro_id %>
-</p>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Nombre</th>
+      <th class="text-center">Edad</th>
+      <th class="text-center">Estado</th>
+    </tr>
+    </thead>
 
-<p>
-  <strong>Numero:</strong>
-  <%= @residencia.numero %>
-</p>
+    <tbody>
+    <% @residencia.vecinos.each do |vecino| %>
+      <tr>
+        <td class="col-md-1"><%= link_to "#{vecino.nombre_completo}", vecino %></td>
+        <td class="col-md-1 text-center"><%= vecino.edad %></td>
+        <td class="col-md-1 text-center"><%= vecino.estado %></td>
+        <td class="col-md-1 text-center">
+          <%= link_to vecino, class: 'btn btn-success btn-xs text-white', target: :_blank do %>
+            <i class="fa fa-eye"></i>
+            Detalles
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
 
-<p>
-  <strong>Piso:</strong>
-  <%= @residencia.piso %>
-</p>
 
-<p>
-  <strong>Dpto:</strong>
-  <%= @residencia.dpto %>
-</p>
-
-<%= link_to 'Edit', edit_residencia_path(@residencia) %> |
-<%= link_to 'Back', residencias_path %>
+  <div class="row col-md-12">
+    <div class="col-md-3">
+      <%= link_to 'Volver', residencias_path, class:'btn btn-primary botoes text-white col-md-12' %>
+    </div>
+    <div class= "col-md-3">
+      <%= link_to "Agregar Vecinos", new_vecinos_path(@residencia), class:"btn btn-dark botoes text-white" %>
+    </div>
+    <div class=" col-md-3">
+      <%= link_to 'Editar', edit_residencia_path(@residencia), class:'btn btn-secondary botoes text-white col-md-12' %>
+    </div>
+  </div>
+</div>

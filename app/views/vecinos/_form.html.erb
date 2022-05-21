@@ -12,9 +12,11 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :residencia_id %>
-    <%= form.text_field :residencia_id %>
+    <%= form.label :residencia %>
+    <%= form.text_field :residencia, value:@residencia, readonly:true %>
   </div>
+
+  <%= form.hidden_field :residencia_id, value: @residencia.id %>
 
   <div class="field">
     <%= form.label :persona_id %>

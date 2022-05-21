@@ -13,6 +13,10 @@ Rails.application.routes.draw do
     get '/new/:registro_id', to: 'residencias#new', on: :collection, as: 'new'
   end
 
+  resources :vecinos do
+    get '/new/:residencia_id', to: 'vecinos#new', on: :collection, as: 'new'
+  end
+
   resources :nombre_calles do
     get '/new_nombre_calle/:calle_id', to: 'nombre_calles#new_nombre_calle', on: :collection, as: 'new_nombre_calle'
   end

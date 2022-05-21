@@ -1,33 +1,66 @@
-<p id="notice"><%= notice %></p>
+<div class="col-md-8 mx-auto">
+  <p id="notice"><%= notice %></p>
+  <div class="row">
+    <div class="col-md-8"><h1>Residencias</h1></div>
+<!--    <div class="col-md-12 my-4 row">-->
+      <%#= form_with(url: residencias_path, local: true, method: :get) do |form| %>
+<!--        <div class="row">-->
+<!--          <div class="col-md-4">-->
+            <%# if params[:query].present? %>
+              <%#= form.text_field :query, class:"form-control", value: params[:query], placeholder:"Número o nombre..." %>
+            <%# else %>
+              <%#= form.text_field :query, class:"form-control",  placeholder:"Número o nombre..." %>
+            <%# end %>
+<!--          </div>-->
+<!--          <div class= "col-md-4">-->
+            <%#= form.submit "Buscar", class:"btn btn-secondary botoes" %>
+<!--          </div>-->
+<!--        </div>-->
+      <%# end %>
+<!--    </div>-->
+  </div>
 
-<h1>Residencias</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Registro</th>
-      <th>Numero</th>
-      <th>Piso</th>
-      <th>Dpto</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @residencias.each do |residencia| %>
+  <% if @residencias.present? %>
+    <table class="table table-striped">
+      <thead>
       <tr>
-        <td><%= residencia.registro_id %></td>
-        <td><%= residencia.numero %></td>
-        <td><%= residencia.piso %></td>
-        <td><%= residencia.dpto %></td>
-        <td><%= link_to 'Show', residencia %></td>
-        <td><%= link_to 'Edit', edit_residencia_path(residencia) %></td>
-        <td><%= link_to 'Destroy', residencia, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Calle</th>
+        <th class="text-center">Numero</th>
+        <th class="text-center">Piso</th>
+        <th class="text-center">Departamento</th>
+        <th class="text-center">Año</th>
+        <th class="text-center">Distrito</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+      </thead>
 
-<br>
+      <tbody>
+      <% @residencias.each do |residencia| %>
+        <tr>
+          <td class="col-md-3"><%= residencia.nombre %></td>
+          <td class="col-md-1 text-center"><%= residencia.numero %></td>
+          <td class="col-md-1 text-center"><%= residencia.piso %></td>
+          <td class="col-md-1 text-center"><%= residencia.dpto %></td>
+          <td class="col-md-1 text-center"><%= residencia.ano %></td>
+          <td class="col-md-1 text-center"><%= residencia.nombre_distrito %></td>
+          <td class="col-md-2 text-center">
+            <%= link_to residencia, class: 'btn btn-success btn-xs text-white' do %>
+              <i class="fa fa-eye"></i>
+              Ver
+            <% end %>
+          </td>
+          <td class="col-md-4 text-center">
+            <%= link_to edit_residencia_path(residencia), class: 'btn btn-primary btn-xs text-white' do %>
+              <i class="fa fa-pencil"></i>
+              Editar
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    Ninguna residencia encontrada
+  <% end %>
+</div>
 
-<%= link_to 'New Residencia', new_residencia_path %>

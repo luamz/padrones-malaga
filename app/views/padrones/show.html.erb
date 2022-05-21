@@ -48,24 +48,36 @@
     <% @registros.each do |registro| %>
       <tr>
         <% if registro.nombre_calle.principal? %>
-          <td class="col-md-1 "><%= link_to "#{registro.nombre_calle.nombre_calle}", registro.nombre_calle.calle %></td>
+          <td class="col-md-2 "><%= link_to "#{registro.nombre_calle.nombre_calle}", registro.nombre_calle.calle %></td>
         <% else %>
-          <td class="col-md-1 "><%= link_to "#{registro.nombre_calle.nombre_calle} (#{registro.nombre_calle.calle.principal})", registro.nombre_calle.calle %></td>
+          <td class="col-md-2 "><%= link_to "#{registro.nombre_calle.nombre_calle} (#{registro.nombre_calle.calle.principal})", registro.nombre_calle.calle %></td>
         <% end %>
-        <td class="col-md-1 "><%= registro.nombre_calle.calle.barrio.nombre_barrio %></td>
+        <td class="col-md-2 "><%= registro.nombre_calle.calle.barrio.nombre_barrio %></td>
         <% if registro.parte.present? %>
           <td class="col-md-1 text-center"><%= registro.parte %></td>
         <% end %>
         <td class="col-md-1 text-center"><%= registro.pagina_inicio %></td>
         <td class="col-md-1 text-center"><%= registro.pagina_fin %></td>
 
-        <td class="col-md-1">
+        <% if registro.residencias.present? %>
+          <td class="col-md-2">
+            <%= link_to registro, class: 'btn btn-warning btn-xs text-black' do %>
+              <i class="fa fa-house"></i>
+              Residencias
+            <% end %>
+          </td>
+        <% else %>
+          <td class="col-md-2">
+          </td>
+        <% end %>
+        <td class="col-md-2">
           <%= link_to new_residencias_path(registro.id), class: 'btn btn-success btn-xs text-white' do %>
-            <i class="fa fa-pencil"></i>
+            <i class="fa fa-plus"></i>
             Nueva Residencia
           <% end %>
         </td>
-        <td class="col-md-1">
+
+        <td class="col-md-2">
           <%= link_to edit_registro_path(registro), class: 'btn btn-primary btn-xs text-white' do %>
             <i class="fa fa-pencil"></i>
             Editar
