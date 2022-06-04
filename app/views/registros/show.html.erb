@@ -1,31 +1,45 @@
-<p id="notice"><%= notice %></p>
+<div class="col-md-9 mx-auto">
+  <p id="notice"><%= notice %></p>
+  <div class="pb-4 row">
+    <div class="col-md-2">Año:<h2><%= @registro.ano%></h2></div>
+    <div class="col-md-2">Distrito:<h2><%= @registro.nombre_distrito%></h2></div>
+    <div class="col-md-4">Calle:<h2><%= @registro.nombre_calle.nombre%></h2></div>
+    <div class="col-md-2">Início:<h2><%= @registro.pagina_inicio%></h2></div>
+    <div class="col-md-2">Fin:<h2><%= @registro.pagina_fin%></h2></div>
+  </div>
 
-<p>
-  <strong>Pagina inicio:</strong>
-  <%= @registro.pagina_inicio %>
-</p>
+  <h4>Residencias</h4>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Página</th>
+      <th>Numero</th>
+      <th>Piso</th>
+      <th>Departamento</th>
+      <th>Familia</th>
+    </tr>
+    </thead>
 
-<p>
-  <strong>Pagina fin:</strong>
-  <%= @registro.pagina_fin %>
-</p>
+    <tbody>
+    <% @residencias.each do |residencia| %>
+      <tr>
+        <td class="col-md-1"><%= residencia.pagina %></td>
+        <td class="col-md-1"><%= residencia.numero %></td>
+        <td class="col-md-1"><%= residencia.piso %></td>
+        <td class="col-md-1"><%= residencia.dpto %></td>
+        <td class="col-md-4"><%= residencia.todos_los_vecinos %></td>
 
-<p>
-  <strong>Enlace:</strong>
-  <%= @registro.enlace %>
-</p>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
 
-<p>
-  <strong>Nombre calle:</strong>
-  <%= @registro.nombre_calle.nombre_calle %>
-</p>
-
-<p>
-  <strong>Padron:</strong>
-  <%= @registro.padron.ano %>
-  <%= @registro.padron.distrito.nombre_distrito %>
-</p>
-
-
-<%= link_to 'Edit', edit_registro_path(@registro) %> |
-<%= link_to 'Back', registros_path %>
+  <div class="row col-md-12">
+    <div class="col-md-3">
+      <%= link_to 'Volver', @registro.padron, class:'btn btn-primary botoes text-white col-md-12' %>
+    </div>
+    <div class=" col-md-3">
+      <%= link_to 'Editar', edit_registro_path(@registro), class:'btn btn-secondary botoes text-white col-md-12' %>
+    </div>
+  </div>
+</div>

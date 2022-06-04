@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_20_225211) do
+ActiveRecord::Schema.define(version: 2022_06_04_135656) do
 
   create_table "barrios", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "nombre_barrio"
@@ -105,6 +105,18 @@ ActiveRecord::Schema.define(version: 2022_05_20_225211) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "observaciones"
     t.integer "pagina"
+    t.boolean "residencia_habitual"
+    t.boolean "classificacion"
+    t.boolean "contrib_anual"
+    t.boolean "sueldo_anual"
+    t.boolean "alquiler"
+    t.boolean "sabe_leer"
+    t.boolean "sabe_escribir"
+    t.boolean "religion"
+    t.boolean "defectos"
+    t.boolean "dia_nacimiento"
+    t.boolean "mes_nacimiento"
+    t.boolean "ano_nacimiento"
     t.index ["registro_id"], name: "index_residencias_on_registro_id"
   end
 

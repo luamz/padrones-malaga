@@ -8,6 +8,7 @@ class RegistrosController < ApplicationController
 
   # GET /registros/1 or /registros/1.json
   def show
+    @residencias = @registro.residencias
   end
 
   # GET /registros/new

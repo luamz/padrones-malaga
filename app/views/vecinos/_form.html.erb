@@ -80,7 +80,7 @@
 
       <div class="col-md-4">
         <%= form.label :mes_nacimiento, "Mes", class:'form-label' %>
-        <%= form.text_field :mes_nacimiento, class:'form-control' %>
+        <%= form.select :mes_nacimiento,  Date::MONTHNAMES[1..12],{ }, class:'form-control' %>
       </div>
 
       <div class="col-md-3">

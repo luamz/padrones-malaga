@@ -1,4 +1,4 @@
-<div class="col-md-10 mx-auto">
+<div class="col-md-12 mx-auto">
   <p id="notice"><%= notice %></p>
   <div class="pb-4 row">
     <div class="col-md-2">Año:<h2><%= @residencia.ano%></h2></div>
@@ -12,9 +12,19 @@
   <table class="table table-striped">
     <thead>
     <tr>
-      <th>Nombre</th>
-      <th class="text-center">Edad</th>
-      <th class="text-center">Estado</th>
+      <th class="col-md-2">Nombre</th>
+      <th class="col-md-1 text-center">Edad</th>
+      <th class="col-md-1 text-center">Estado</th>
+      <th class="col-md-1 text-center">Ocupacíon</th>
+      <th class="col-md-2 text-center">Naturaleza</th>
+      <th class="col-md-1 text-center">Parroquia</th>
+      <th class="col-md-1 text-center">Años de Residencia</th>
+      <% if @residencia.contrib_anual? %>
+        <th class="col-md-1 text-center">Contribucíon Anual (Pesetas)</th>
+      <% end %>
+      <% if @residencia.sueldo_anual? %>
+        <th class="col-md-1 text-center">Sueldo Anual (Pesetas)</th>
+      <% end %>
     </tr>
     </thead>
 
@@ -24,6 +34,17 @@
         <td class="col-md-1"><%= link_to "#{vecino.nombre_completo}", vecino %></td>
         <td class="col-md-1 text-center"><%= vecino.edad %></td>
         <td class="col-md-1 text-center"><%= vecino.estado %></td>
+        <td class="col-md-1 text-center"><%= vecino.ocupacion %></td>
+        <td class="col-md-1 text-center"><%= vecino.pueblo_naturaleza %>, <%= vecino.provincia_naturaleza %></td>
+        <td class="col-md-1 text-center"><%= vecino.parroquia %></td>
+        <td class="col-md-1 text-center"><%= vecino.tiempo_residencia %></td>
+        <% if @residencia.contrib_anual? %>
+          <td class="col-md-1 text-center"><%= vecino.contrib_anual %></td>
+        <% end %>
+        <% if @residencia.sueldo_anual? %>
+          <td class="col-md-1 text-center"><%= vecino.sueldo_anual %></td>
+        <% end %>
+
         <td class="col-md-1 text-center">
           <%= link_to vecino, class: 'btn btn-success btn-xs text-white', target: :_blank do %>
             <i class="fa fa-eye"></i>

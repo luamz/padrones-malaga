@@ -67,6 +67,8 @@ class ResidenciasController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def residencia_params
-      params.require(:residencia).permit(:registro_id, :numero, :piso, :dpto, :pagina, :observaciones)
+      params.require(:residencia).permit(:registro_id, :numero, :piso, :dpto, :pagina, :observaciones, :dia_nacimiento,
+                                         :mes_nacimiento, :ano_nacimiento, :alquiler, :contrib_anual, :sueldo_anual,
+                                         :residencia_habitual, :religion, :defectos, :sabe_leer, :sabe_escribir, :classificacion)
     end
 end

@@ -1,5 +1,5 @@
 <%= form_with(model: residencia, local: true) do |form| %>
-  <div class="col-md-6 mx-auto">
+  <div class="col-md-7 mx-auto">
     <% if residencia.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(residencia.errors.count, "error") %> prohibited this residencia from being saved:</h2>
@@ -67,6 +67,59 @@
         </div>
       </div>
     </div>
+
+    <h4 class="my-2">Incluir Campos Opcionales</h4>
+    <div class="row">
+      <div class=" col-md-4">
+        <%= form.check_box :dia_nacimiento %>
+        <%= form.label :dia_nacimiento, "Dia de Nacimiento", class:'form-label px-2' %>
+      </div>
+      <div class=" col-md-4">
+        <%= form.check_box :mes_nacimiento %>
+        <%= form.label :mes_nacimiento, "Mes de Nacimiento", class:'form-label px-2' %>
+      </div>
+      <div class=" col-md-4">
+        <%= form.check_box :ano_nacimiento %>
+        <%= form.label :ano_nacimiento, "Año de Nacimiento", class:'form-label px-2' %>
+      </div>
+      <div class="col-md-4">
+        <%= form.check_box :alquiler %>
+        <%= form.label :alquiler, "Alquiler", class:'form-label px-2' %>
+      </div>
+      <div class="col-md-4">
+        <%= form.check_box :contrib_anual %>
+        <%= form.label :contrib_anual, "Contribucíon Anual", class:'form-label px-2' %>
+      </div>
+      <div class="col-md-4">
+        <%= form.check_box :sueldo_anual %>
+        <%= form.label :sueldo_anual, "Sueldo Anual", class:'form-label px-2' %>
+      </div>
+      <div class="col-md-4">
+        <%= form.check_box :residencia_habitual %>
+        <%= form.label :residencia_habitual, "Residencia Habitual", class:'form-label px-2' %>
+      </div>
+      <div class="col-md-4">
+        <%= form.check_box :religion %>
+        <%= form.label :religion, "Religión", class:'form-label px-2' %>
+      </div>
+      <div class="col-md-4">
+        <%= form.check_box :defectos %>
+        <%= form.label :defectos, "Defectos Físicos", class:'form-label px-2' %>
+      </div>
+      <div class="col-md-4">
+        <%= form.check_box :sabe_leer %>
+        <%= form.label :sabe_leer, "Sabe leer", class:'form-label px-2' %>
+      </div>
+      <div class="col-md-4">
+        <%= form.check_box :sabe_escribir %>
+        <%= form.label :sabe_escribir, "Sabe escribir", class:'form-label px-2' %>
+      </div>
+      <div class="col-md-4">
+        <%= form.check_box :classificacion %>
+        <%= form.label :classificacion, "Classificacion", class:'form-label px-2' %>
+      </div>
+    </div>
+
 
 
     <div class="row pt-2">
