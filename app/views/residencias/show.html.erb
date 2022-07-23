@@ -5,8 +5,12 @@
     <div class="col-md-2">Distrito:<h2><%= @residencia.nombre_distrito%></h2></div>
     <div class="col-md-4">Calle:<h2><%= @residencia.nombre%></h2></div>
     <div class="col-md-1 text-center">Número: <h2><%= @residencia.numero%></h2></div>
-    <div class="col-md-1 text-center">Piso: <h2><%= @residencia.piso%></h2></div>
-    <div class="col-md-1 text-center">Departamento: <h2><%= @residencia.dpto%></h2></div>
+    <% if @residencia.piso.present? %>
+      <div class="col-md-1 text-center">Piso: <h2><%= @residencia.piso%></h2></div>
+    <% end %>
+    <% if @residencia.dpto.present? %>
+      <div class="col-md-1 text-center">Departamento: <h2><%= @residencia.dpto%></h2></div>
+    <% end %>
   </div>
 
   <table class="table table-striped">
@@ -50,9 +54,13 @@
         <% end %>
 
         <td class="col-md-1 text-center">
-          <%= link_to vecino, class: 'btn btn-success btn-xs text-white', target: :_blank do %>
+          <%= link_to vecino, class: 'btn btn-success btn-xs text-white' do %>
             <i class="fa fa-eye"></i>
-            Detalles
+          <% end %>
+        </td>
+        <td class= "col-md-1 text-center">
+          <%= link_to edit_vecino_path(vecino), class: 'btn btn-primary btn-xs text-white' do %>
+            <i class="fa fa-pencil"></i>
           <% end %>
         </td>
       </tr>

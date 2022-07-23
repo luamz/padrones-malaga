@@ -1,119 +1,66 @@
-<p id="notice"><%= notice %></p>
+<div class="col-md-12 mx-auto">
+  <p id="notice"><%= notice %></p>
+  <div class="pb-4 row">
 
-<p>
-  <strong>Residencia:</strong>
-  <%= @vecino.residencia_id %>
-</p>
+    <div class="col-md-2">Ano :<h2><%= @vecino.ano %></h2></div>
+    <div class="col-md-2">Distrito :<h2><%= @vecino.nombre_distrito %></h2></div>
+    <div class="col-md-4">Residencia :<h2><%= @vecino.residencia.direccion_completa %></h2></div>
+    <div class="col-md-4">Vecino :<h2><%= @vecino.persona.nombre_completo %></h2></div>
 
-<p>
-  <strong>Persona:</strong>
-  <%= @vecino.persona_id %>
-</p>
 
-<p>
-  <strong>Edad:</strong>
-  <%= @vecino.edad %>
-</p>
+    <div class="col-md-4">Naturaleza :<h2><%= @vecino.pueblo_naturaleza %>, <%= @vecino.provincia_naturaleza %></h2></div>
+    <div class="col-md-2">Edad :<h2><%= @vecino.edad %></h2></div>
+    <div class="col-md-2">Nacimiento estimado :<h2><%= @vecino.ano_nacimiento_estimado %></h2></div>
+    <div class="col-md-4">Parroquia :<h2><%= @vecino.parroquia %></h2></div>
 
-<p>
-  <strong>Ocupacion:</strong>
-  <%= @vecino.ocupacion %>
-</p>
+    <div class="col-md-2">Tiempo de Residencia :<h2><%= @vecino.tiempo_residencia %></h2></div>
+    <div class="col-md-2">Llegada estimado :<h2><%= @vecino.ano_llegada_estimado %></h2></div>
+    <div class="col-md-2">Estado Civil :<h2><%= @vecino.estado_civil %></h2></div>
+    <% if @vecino.ocupacion.present? %><div class="col-md-2">Ocupación :<h2><%= @vecino.ocupacion %></h2></div><% end %>
+    <% if @vecino.religion.present? %><div class="col-md-4">Religión :<h2><%= @vecino.religion %></h2></div><% end %>
 
-<p>
-  <strong>Pueblo naturaleza:</strong>
-  <%= @vecino.pueblo_naturaleza %>
-</p>
+    <% if @vecino.residencia_habitual.present? %>
+      <div class="col-md-2">Residencia Habitual :<h2><%= @vecino.residencia_habitual %></h2></div>
+    <% end %>
+    <% if @vecino.classificacion.present? %>
+      <div class="col-md-2">Classificacion :<h2><%= @vecino.classificacion %></h2></div>
+    <% end %>
 
-<p>
-  <strong>Provincia naturaleza:</strong>
-  <%= @vecino.provincia_naturaleza %>
-</p>
+    <% if @vecino.alquiler.present? %>
+      <div class="col-md-4">Alquiler :<h2><%= @vecino.alquiler %></h2></div>
+    <% end %>
+    <% if @vecino.contrib_anual.present? %>
+      <div class="col-md-4">Contribuición Anual :<h2><%= @vecino.contrib_anual %></h2></div>
+    <% end %>
+    <% if @vecino.sueldo_anual.present? %>
+      <div class="col-md-4">Sueldo Anual :<h2><%= @vecino.sueldo_anual %></h2></div>
+    <% end %>
 
-<p>
-  <strong>Parroquia:</strong>
-  <%= @vecino.parroquia %>
-</p>
+    <% if @vecino.sabe_leer.present? %>
+      <div class="col-md-4">Sabe leer? :<h2><%= @vecino.sabe_leer %></h2></div>
+    <% end %>
+    <% if @vecino.sabe_escribir.present? %>
+      <div class="col-md-4">Sabe escribir? :<h2><%= @vecino.sabe_escribir %></h2></div>
+    <% end %>
+    <% if @vecino.defectos.present? %>
+      <div class="col-md-4">Defectos :<h2><%= @vecino.defectos %></h2></div>
+    <% end %>
 
-<p>
-  <strong>Estado:</strong>
-  <%= @vecino.estado %>
-</p>
+    <% if @vecino.dia_nacimiento.present? %>
+      <div class="col-md-1">Dia de Nacimiento :<h2><%= @vecino.dia_nacimiento %></h2></div>
+    <% end %>
+    <% if @vecino.mes_nacimiento.present? %>
+      <div class="col-md-2">Mes de Nacimiento :<h2><%= @vecino.mes_nacimiento %></h2></div>
+    <% end %>
+    <% if @vecino.ano_nacimiento.present? %>
+      <div class="col-md-1">Año de Nacimiento :<h2><%= @vecino.ano_nacimiento %></h2></div>
+    <% end %>
 
-<p>
-  <strong>Tiempo residencia:</strong>
-  <%= @vecino.tiempo_residencia %>
-</p>
-
-<p>
-  <strong>Residencia habitual:</strong>
-  <%= @vecino.residencia_habitual %>
-</p>
-
-<p>
-  <strong>Dia nacimiento:</strong>
-  <%= @vecino.dia_nacimiento %>
-</p>
-
-<p>
-  <strong>Mes nacimiento:</strong>
-  <%= @vecino.mes_nacimiento %>
-</p>
-
-<p>
-  <strong>Ano nacimiento:</strong>
-  <%= @vecino.ano_nacimiento %>
-</p>
-
-<p>
-  <strong>Classificacion:</strong>
-  <%= @vecino.classificacion %>
-</p>
-
-<p>
-  <strong>Contrib anual:</strong>
-  <%= @vecino.contrib_anual %>
-</p>
-
-<p>
-  <strong>Sueldo anual:</strong>
-  <%= @vecino.sueldo_anual %>
-</p>
-
-<p>
-  <strong>Alquiler:</strong>
-  <%= @vecino.alquiler %>
-</p>
-
-<p>
-  <strong>Sabe leer:</strong>
-  <%= @vecino.sabe_leer %>
-</p>
-
-<p>
-  <strong>Sabe escribir:</strong>
-  <%= @vecino.sabe_escribir %>
-</p>
-
-<p>
-  <strong>Religion:</strong>
-  <%= @vecino.religion %>
-</p>
-
-<p>
-  <strong>Defectos:</strong>
-  <%= @vecino.defectos %>
-</p>
-
-<p>
-  <strong>Ano nacimiento estimado:</strong>
-  <%= @vecino.ano_nacimiento_estimado %>
-</p>
-
-<p>
-  <strong>Ano llegada estimado:</strong>
-  <%= @vecino.ano_llegada_estimado %>
-</p>
-
-<%= link_to 'Edit', edit_vecino_path(@vecino) %> |
-<%= link_to 'Back', vecinos_path %>
+    <div class=" col-md-6 my-4">
+      <%= link_to 'Editar', edit_vecino_path(@vecino), class:'btn btn-secondary botoes text-white col-md-12' %>
+    </div>
+    <div class="col-md-6 my-4">
+      <%= link_to 'Volver', request.referer, class:'btn btn-primary botoes text-white col-md-12' %>
+    </div>
+  </div>
+</div>

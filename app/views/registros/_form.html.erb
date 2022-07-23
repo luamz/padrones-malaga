@@ -65,7 +65,7 @@
           <%= form.submit class:"btn btn-success", style:"width:200px;" %>
         </div>
         <div class="col-md-6">
-          <%= link_to 'Volver', padron_path(@padron_y_distrito), class:'btn btn-primary botoes text-white col-md-12' %>
+          <%= link_to 'Volver',  request.referer, class:'btn btn-primary botoes text-white col-md-12' %>
         </div>
       </div>
     </div>

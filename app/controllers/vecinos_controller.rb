@@ -24,6 +24,7 @@ class VecinosController < ApplicationController
     personas = []
     Persona.all.each {|persona| personas << [persona.nombre_completo, persona.id]}
     @personas = personas
+    @persona = [ @vecino.persona.nombre_completo, @vecino.persona_id]
     @residencia = Residencia.find(@vecino.residencia_id)
   end
 

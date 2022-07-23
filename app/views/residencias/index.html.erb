@@ -39,9 +39,9 @@
         <tr>
           <td class="col-md-4"><%= residencia.nombre %></td>
           <td class="col-md-1 text-center"><%= residencia.numero %></td>
-          <td class="col-md-1 text-center"><%= residencia.piso %></td>
-          <td class="col-md-1 text-center"><%= residencia.dpto %></td>
-          <td class="col-md-1 text-center"><%= residencia.ano %></td>
+          <td class="text-center"><%= residencia.piso %></td>
+          <td class="text-center"><%= residencia.dpto %></td>
+          <td class="text-center"><%= residencia.ano %></td>
           <td class="col-md-1 text-center"><%= residencia.nombre_distrito %></td>
           <td class="col-md-2 text-center">
             <%= link_to residencia, class: 'btn btn-success btn-xs text-white' do %>
@@ -49,7 +49,7 @@
               Ver
             <% end %>
           </td>
-          <td class="col-md-4 text-center">
+          <td class="col-md-2 text-center">
             <%= link_to edit_residencia_path(residencia), class: 'btn btn-primary btn-xs text-white' do %>
               <i class="fa fa-pencil"></i>
               Editar

@@ -39,7 +39,7 @@
     <div class="row">
       <div class="field col-md-3">
         <%= form.label :persona_id, class:'form-label'%>
-        <%= form.select :persona_id, options_for_select(@personas), {}, class:'form-control' %>
+        <%= form.select :persona_id, options_for_select(@personas, @persona), {}, class:'form-control' %>
       </div>
       <div class="field col-md-1">
         <%= form.label :edad, class:'form-label' %>
