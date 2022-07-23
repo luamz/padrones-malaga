@@ -36,119 +36,120 @@
 
     <%= form.hidden_field :registro_id, value: @residencia.id %>
 
+    <div class="row">
+      <div class="field col-md-3">
+        <%= form.label :persona, class:'form-label'%>
+        <%= form.select :persona, options_for_select(@personas), {}, class:'form-control' %>
+      </div>
+      <div class="field col-md-1">
+        <%= form.label :edad, class:'form-label' %>
+        <%= form.text_field :edad, class:'form-control' %>
+      </div>
+      <div class="field col-md-2">
+        <%= form.label :estado, class:'form-label' %>
+        <%= form.select :estado, [%w[Soltero S], %w[Casado C], %w[Viudo V]], {}, class:'form-control' %>
+      </div>
+      <div class="field col-md-2">
+        <%= form.label :ocupacion, class:'form-label' %>
+        <%= form.text_field :ocupacion, class:'form-control' %>
+      </div>
+      <div class="row col-md-4">
+        <div class="col-md-12">Nacimiento</div>
+        <div class="col-md-3">
+          <%= form.number_field :dia_nacimiento, class:'form-control' %>
+        </div>
 
-    <div class="field">
-      <%= form.label :persona_id %>
-      <%= form.text_field :persona_id %>
+        <div class="col-md-4">
+          <%= form.select :mes_nacimiento,  Date::MONTHNAMES[1..12],{ }, class:'form-control' %>
+        </div>
+
+        <div class="col-md-3">
+          <%= form.text_field :ano_nacimiento, class:'form-control' %>
+        </div>
     </div>
-
-    <div class="field">
-      <%= form.label :edad %>
-      <%= form.text_field :edad %>
-    </div>
-
-    <div class="field">
-      <%= form.label :estado %>
-      <%= form.text_field :estado %>
-    </div>
-
-    <div class="field">
-      <%= form.label :ocupacion %>
-      <%= form.text_field :ocupacion %>
-    </div>
-
-    <div class="field">
-      <%= form.label :pueblo_naturaleza %>
-      <%= form.text_field :pueblo_naturaleza %>
-    </div>
-
-    <div class="field">
-      <%= form.label :provincia_naturaleza %>
-      <%= form.text_field :provincia_naturaleza %>
-    </div>
-
-    <div class="field">
-      <%= form.label :parroquia %>
-      <%= form.text_field :parroquia %>
-    </div>
-
-    <div class="row col-md-4">
-      <div class="col-md-3">
-        <%= form.label :dia_nacimiento, "Dia", class:'form-label' %>
-        <%= form.number_field :dia_nacimiento, class:'form-control' %>
+    <div class="row">
+      <div class="field col-md-4">
+        <%= form.label :pueblo_naturaleza, class:'form-label' %>
+        <%= form.text_field :pueblo_naturaleza, class:'form-control' %>
       </div>
 
-      <div class="col-md-4">
-        <%= form.label :mes_nacimiento, "Mes", class:'form-label' %>
-        <%= form.select :mes_nacimiento,  Date::MONTHNAMES[1..12],{ }, class:'form-control' %>
+      <div class="field col-md-4">
+        <%= form.label :provincia_naturaleza, class:'form-label' %>
+        <%= form.text_field :provincia_naturaleza, class:'form-control' %>
       </div>
 
-      <div class="col-md-3">
-        <%= form.label :ano_nacimiento, "Año", class:'form-label' %>
-        <%= form.text_field :ano_nacimiento, class:'form-control' %>
+      <div class="field col-md-4">
+        <%= form.label :parroquia, class:'form-label' %>
+        <%= form.text_field :parroquia, class:'form-control' %>
+      </div>
+
+      <div class="field col-md-2">
+        <%= form.label 'Llegada Estimada', class:'form-label' %>
+        <%= form.number_field :ano_llegada_estimado, class:'form-control' %>
+      </div>
+
+      <div class="field col-md-4">
+        <%= form.label :tiempo_residencia, class:'form-label' %>
+        <%= form.text_field :tiempo_residencia, class:'form-control' %>
+      </div>
+
+      <div class="field col-md-4">
+        <%= form.label :residencia_habitual, class:'form-label' %>
+        <%= form.text_field :residencia_habitual, class:'form-control' %>
+      </div>
+      <div class="field col-md-2">
+        <%= form.label 'Nacimiento Estimado', class:'form-label' %>
+        <%= form.number_field :ano_nacimiento_estimado, class:'form-control' %>
+      </div>
     </div>
 
-    <div class="field">
-      <%= form.label :tiempo_residencia %>
-      <%= form.text_field :tiempo_residencia %>
+    <div class="row">
+      <div class="field col-md-2">
+        <%= form.label :classificacion, class:'form-label' %>
+        <%= form.text_field :classificacion, class:'form-control' %>
+      </div>
+
+      <div class="field col-md-2">
+        <%= form.label :contrib_anual, class:'form-label' %>
+        <%= form.text_field :contrib_anual, class:'form-control' %>
+      </div>
+
+      <div class="field col-md-2">
+        <%= form.label :sueldo_anual, class:'form-label' %>
+        <%= form.text_field :sueldo_anual, class:'form-control' %>
+      </div>
+
+      <div class="field col-md-2">
+        <%= form.label :alquiler, class:'form-label' %>
+        <%= form.text_field :alquiler, class:'form-control' %>
+      </div>
+
+      <div class="field col-md-2">
+        <%= form.label :religion, class:'form-label' %>
+        <%= form.text_field :religion, class:'form-control' %>
+      </div>
+
+      <div class="field col-md-2">
+        <%= form.label :defectos, class:'form-label' %>
+        <%= form.text_field :defectos, class:'form-control' %>
+      </div>
     </div>
 
-    <div class="field">
-      <%= form.label :residencia_habitual %>
-      <%= form.text_field :residencia_habitual %>
-    </div>
+    <div class="row">
+
 
 
     </div>
 
-    <div class="field">
-      <%= form.label :classificacion %>
-      <%= form.text_field :classificacion %>
-    </div>
-
-    <div class="field">
-      <%= form.label :contrib_anual %>
-      <%= form.text_field :contrib_anual %>
-    </div>
-
-    <div class="field">
-      <%= form.label :sueldo_anual %>
-      <%= form.text_field :sueldo_anual %>
-    </div>
-
-    <div class="field">
-      <%= form.label :alquiler %>
-      <%= form.text_field :alquiler %>
-    </div>
-
-    <div class="field">
-      <%= form.label :sabe_leer %>
-      <%= form.check_box :sabe_leer %>
-    </div>
-
-    <div class="field">
-      <%= form.label :sabe_escribir %>
-      <%= form.check_box :sabe_escribir %>
-    </div>
-
-    <div class="field">
-      <%= form.label :religion %>
-      <%= form.text_field :religion %>
-    </div>
-
-    <div class="field">
-      <%= form.label :defectos %>
-      <%= form.text_field :defectos %>
-    </div>
-
-    <div class="field">
-      <%= form.label :ano_nacimiento_estimado %>
-      <%= form.number_field :ano_nacimiento_estimado %>
-    </div>
-
-    <div class="field">
-      <%= form.label :ano_llegada_estimado %>
-      <%= form.number_field :ano_llegada_estimado %>
+    <div class="field row col-md-4 my-4">
+      <div class="field col-md-6">
+        <%= form.label :sabe_leer, class:'form-check-label' %>
+        <%= form.check_box :sabe_leer, class:'form-check-input' %>
+      </div>
+      <div class="field col-md-6">
+        <%= form.label :sabe_escribir, class:'form-check-label' %>
+        <%= form.check_box :sabe_escribir, class:'form-check-input' %>
+      </div>
     </div>
 
     <div class="row pt-2">
@@ -161,6 +162,4 @@
     </div>
   </div>
   <% end %>
-
-
-
+</div>

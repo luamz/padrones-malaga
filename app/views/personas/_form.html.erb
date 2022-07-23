@@ -1,77 +1,93 @@
 <%= form_with(model: persona, local: true) do |form| %>
-  <% if persona.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(persona.errors.count, "error") %> prohibited this persona from being saved:</h2>
+  <div class="col-md-8 mx-auto">
+    <% if persona.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(persona.errors.count, "error") %> prohibited this persona from being saved:</h2>
 
-      <ul>
-        <% persona.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+        <ul>
+          <% persona.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="row">
+      <div class="field col-md-4 text-center">
+        <%= form.label :nombre, class:'form-label' %>
+        <%= form.text_field :nombre, class:'form-control' %>
+      </div>
+
+      <div class="field col-md-4 text-center">
+        <%= form.label 'Primer Apellido', class:'form-label' %>
+        <%= form.text_field :apellido1, class:'form-control' %>
+      </div>
+
+      <div class="field col-md-4 text-center">
+        <%= form.label 'Segundo Apellido', class:'form-label' %>
+        <%= form.text_field :apellido2, class:'form-control' %>
+      </div>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= form.label :nombre %>
-    <%= form.text_field :nombre %>
-  </div>
 
-  <div class="field">
-    <%= form.label :apellido1 %>
-    <%= form.text_field :apellido1 %>
-  </div>
+    <div class="row">
+      <div class="field col-md-2">
+        <%= form.label :nacimiento, class:'form-label' %>
+        <%= form.text_field :nacimiento, class:'form-control' %>
+      </div>
 
-  <div class="field">
-    <%= form.label :apellido2 %>
-    <%= form.text_field :apellido2 %>
-  </div>
+      <div class="field col-md-6">
+        <%= form.label :ciudad_nacimiento, class:'form-label' %>
+        <%= form.text_field :ciudad_nacimiento, class:'form-control' %>
+      </div>
 
-  <div class="field">
-    <%= form.label :nacimiento %>
-    <%= form.text_field :nacimiento %>
-  </div>
+      <div class="field col-md-4 mt-4">
+        <%= form.label "Confirmado?", class:'form-check-label' %>
+        <%= form.check_box :confirmacion_nacimiento, class:'form-check-input' %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :ciudad_nacimiento %>
-    <%= form.text_field :ciudad_nacimiento %>
-  </div>
+    <div class="row">
+      <div class="field col-md-2">
+        <%= form.label :bautismo, class:'form-label' %>
+        <%= form.text_field :bautismo, class:'form-control' %>
+      </div>
 
-  <div class="field">
-    <%= form.label :confirmacion_nacimiento %>
-    <%= form.check_box :confirmacion_nacimiento %>
-  </div>
+      <div class="field col-md-6">
+        <%= form.label :parroquia, class:'form-label' %>
+        <%= form.text_field :parroquia, class:'form-control' %>
+      </div>
 
-  <div class="field">
-    <%= form.label :defuncion %>
-    <%= form.text_field :defuncion %>
-  </div>
+      <div class="field col-md-4 mt-4">
+        <%= form.label "Confirmado?", class:'form-check-label' %>
+        <%= form.check_box :confirmacion_bautismo, class:'form-check-input' %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :ciudad_defuncion %>
-    <%= form.text_field :ciudad_defuncion %>
-  </div>
+    <div class="row">
+      <div class="field col-md-2">
+        <%= form.label :defuncion, class:'form-label' %>
+        <%= form.text_field :defuncion, class:'form-control' %>
+      </div>
 
-  <div class="field">
-    <%= form.label :confirmacion_defuncion %>
-    <%= form.check_box :confirmacion_defuncion %>
-  </div>
+      <div class="field col-md-6">
+        <%= form.label :ciudad_defuncion, class:'form-label' %>
+        <%= form.text_field :ciudad_defuncion, class:'form-control' %>
+      </div>
 
-  <div class="field">
-    <%= form.label :bautismo %>
-    <%= form.text_field :bautismo %>
-  </div>
+      <div class="field col-md-4 mt-4">
+        <%= form.label "Confirmado?", class:'form-check-label'%>
+        <%= form.check_box :confirmacion_defuncion, class:'form-check-input'%>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :parroquia %>
-    <%= form.text_field :parroquia %>
-  </div>
-
-  <div class="field">
-    <%= form.label :confirmacion_bautismo %>
-    <%= form.check_box :confirmacion_bautismo %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+    <div class="row pt-2">
+      <div class= "col-md-4">
+        <%= form.submit class:"btn btn-success botoes" %>
+      </div>
+      <div class="col-md-4">
+        <%= link_to 'Volver', request.referer, class:'btn btn-primary botoes text-white col-md-12' %>
+      </div>
+    </div>
   </div>
 <% end %>

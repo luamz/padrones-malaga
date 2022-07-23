@@ -15,6 +15,9 @@ es:
       residencia:
         create: "Crear Residencia"
         update: "Actualizar Residencia"
+      persona:
+        create: "Crear Persona"
+        update: "Actualizar Persona"
 
     page_entries_info:
       more_pages:

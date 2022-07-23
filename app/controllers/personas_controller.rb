@@ -6,10 +6,6 @@ class PersonasController < ApplicationController
     @personas = Persona.all
   end
 
-  # GET /personas/1 or /personas/1.json
-  def show
-  end
-
   # GET /personas/new
   def new
     @persona = Persona.new
@@ -25,7 +21,7 @@ class PersonasController < ApplicationController
 
     respond_to do |format|
       if @persona.save
-        format.html { redirect_to persona_url(@persona), notice: "Persona was successfully created." }
+        format.html { redirect_to personas_path, notice: "Persona creada con éxito." }
         format.json { render :show, status: :created, location: @persona }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +34,7 @@ class PersonasController < ApplicationController
   def update
     respond_to do |format|
       if @persona.update(persona_params)
-        format.html { redirect_to persona_url(@persona), notice: "Persona was successfully updated." }
+        format.html { redirect_to personas_path, notice: "Persona actualizada con éxito." }
         format.json { render :show, status: :ok, location: @persona }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -47,15 +43,6 @@ class PersonasController < ApplicationController
     end
   end
 
-  # DELETE /personas/1 or /personas/1.json
-  def destroy
-    @persona.destroy
-
-    respond_to do |format|
-      format.html { redirect_to personas_url, notice: "Persona was successfully destroyed." }
-      format.json { head :no_content }
-    end
-  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

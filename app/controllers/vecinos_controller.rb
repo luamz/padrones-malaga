@@ -12,6 +12,9 @@ class VecinosController < ApplicationController
 
   # GET /vecinos/new
   def new
+    personas = []
+    Persona.all.each {|persona| personas << persona.nombre_completo}
+    @personas = personas
     @vecino = Vecino.new
     @residencia = Residencia.find(params[:residencia_id])
   end
@@ -67,6 +70,6 @@ class VecinosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def vecino_params
-      params.require(:vecino).permit(:residencia_id, :persona_id, :edad, :ocupacion, :pueblo_naturaleza, :provincia_naturaleza, :parroquia, :estado, :tiempo_residencia, :residencia_habitual, :dia_nacimiento, :mes_nacimiento, :ano_nacimiento, :classificacion, :contrib_anual, :sueldo_anual, :alquiler, :sabe_leer, :sabe_escribir, :religion, :defectos, :ano_nacimiento_estimado, :ano_llegada_estimado)
+      params.require(:vecino).permit(:residencia_id, :persona, :edad, :ocupacion, :pueblo_naturaleza, :provincia_naturaleza, :parroquia, :estado, :tiempo_residencia, :residencia_habitual, :dia_nacimiento, :mes_nacimiento, :ano_nacimiento, :classificacion, :contrib_anual, :sueldo_anual, :alquiler, :sabe_leer, :sabe_escribir, :religion, :defectos, :ano_nacimiento_estimado, :ano_llegada_estimado)
     end
 end
