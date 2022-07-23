@@ -35,7 +35,7 @@
     </thead>
 
     <tbody>
-    <% @residencia.vecinos.each do |vecino| %>
+    <% @vecinos.each do |vecino| %>
       <tr>
         <td class="col-md-1"><%= link_to "#{vecino.nombre_completo}", vecino.persona %></td>
         <td class="text-center"><%= vecino.edad %></td>

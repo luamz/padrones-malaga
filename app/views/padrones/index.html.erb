@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<div class="col-md-8">
-  <h1>Padrones</h1></div>
+<div class="col-md-9 mx-auto">
+  <h1>Padrones</h1>
   <div class="col-md-12 my-4 row">
     <div class="row">
       <div class="col-md-2"><%= link_to 'Nuevo Padron', new_padron_path, class:'btn btn-primary botoes text-white' %></div>
@@ -14,6 +14,7 @@
         <th>Año</th>
         <th class="text-center">Distrito</th>
         <th class="text-center">Registros</th>
+        <th class="text-center">Residencias</th>
         <th class="text-center">Completo</th>
       </tr>
     </thead>
@@ -22,20 +23,21 @@
       <% @padrones.each do |padron| %>
         <tr>
           <td class="col-md-1"><%= link_to "#{padron.ano}", padron %></td>
-          <td class="col-md-2 text-center"><%= link_to "#{padron.distrito.nombre_distrito}", padron.distrito %></td>
+          <td class="col-md-1 text-center"><%= link_to "#{padron.distrito.nombre_distrito}", padron.distrito %></td>
           <td class="col-md-1 text-center"><%= padron.num_registros %></td>
+          <td class="col-md-1 text-center"><%= padron.num_residencias %></td>
           <% if padron.terminado? %>
-            <td class="col-md-2 text-center"> <i class="fa fa-check"></i></td>
+            <td class="col-md-1 text-center"> <i class="fa fa-check"></i></td>
           <% else %>
-            <td class="col-md-2 text-center"> <i class="fa fa-x"></i></td>
+            <td class="col-md-1 text-center"> <i class="fa fa-x"></i></td>
           <% end %>
-          <td class="col-md-2">
+          <td class="col-md-4">
             <%= link_to new_registros_path(padron.id), class: 'btn btn-dark btn-xs text-white' do %>
               <i class="fa fa-plus"></i>
               Agregar Nuevo Registro
             <% end %>
           </td>
-          <td class="col-md-2">
+          <td class="col-md-4">
             <%= link_to edit_padron_path(padron), class: 'btn btn-primary btn-xs text-white' do %>
               <i class="fa fa-pencil"></i>
               Editar
@@ -46,4 +48,3 @@
     </tbody>
   </table>
 </div>
-

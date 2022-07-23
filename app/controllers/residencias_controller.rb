@@ -3,11 +3,12 @@ class ResidenciasController < ApplicationController
 
   # GET /residencias or /residencias.json
   def index
-    @residencias = Residencia.all
+    @residencias = Residencia.all.sort_by { |residencia| residencia.registro.ano  }
   end
 
   # GET /residencias/1 or /residencias/1.json
   def show
+    @vecinos = @residencia.vecinos.order(:edad).reverse_order
   end
 
   # GET /residencias/new
@@ -18,7 +19,7 @@ class ResidenciasController < ApplicationController
 
   # GET /residencias/1/edit
   def edit
-    @registro = Registro.find(params[:id])
+    @registro = @residencia.registro
   end
 
   # POST /residencias or /residencias.json

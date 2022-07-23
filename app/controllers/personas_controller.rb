@@ -13,7 +13,7 @@ class PersonasController < ApplicationController
 
   # GET /personas/1 or /personas/1.json
   def show
-    @vecinos = @persona.vecinos
+    @vecinos = @persona.vecinos.sort_by { |vecino| vecino.residencia.registro.ano  }
   end
 
   # GET /personas/1/edit
