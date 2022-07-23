@@ -2,11 +2,12 @@ td {
   font-size: 15px;
 }
 
-td a {
-  all: unset;
+a, a:visited {
+  text-decoration: none;
+  color: #000000;
 }
-td a:hover{
-  all: unset;
+a:hover{
+  background-color: transparent;
 }
 
 .botoes {

@@ -3,12 +3,16 @@ class PersonasController < ApplicationController
 
   # GET /personas or /personas.json
   def index
-    @personas = Persona.all
+    @personas = Persona.all.order(nombre: :asc)
   end
 
   # GET /personas/new
   def new
     @persona = Persona.new
+  end
+
+  # GET /personas/1 or /personas/1.json
+  def show
   end
 
   # GET /personas/1/edit

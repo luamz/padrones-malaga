@@ -13,7 +13,7 @@ class VecinosController < ApplicationController
   # GET /vecinos/new
   def new
     personas = []
-    Persona.all.each {|persona| personas << persona.nombre_completo}
+    Persona.all.each {|persona| personas << [persona.nombre_completo, persona.id]}
     @personas = personas
     @vecino = Vecino.new
     @residencia = Residencia.find(params[:residencia_id])
@@ -21,16 +21,18 @@ class VecinosController < ApplicationController
 
   # GET /vecinos/1/edit
   def edit
-    @residencia = Residencia.find(params[:id])
+    personas = []
+    Persona.all.each {|persona| personas << [persona.nombre_completo, persona.id]}
+    @personas = personas
+    @residencia = Residencia.find(@vecino.residencia_id)
   end
 
   # POST /vecinos or /vecinos.json
   def create
     @vecino = Vecino.new(vecino_params)
-
     respond_to do |format|
       if @vecino.save
-        format.html { redirect_to vecino_url(@vecino), notice: "Vecino was successfully created." }
+        format.html { redirect_to  residencia_path(@vecino.residencia_id), notice: "Vecino creado con éxito." }
         format.json { render :show, status: :created, location: @vecino }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -43,7 +45,7 @@ class VecinosController < ApplicationController
   def update
     respond_to do |format|
       if @vecino.update(vecino_params)
-        format.html { redirect_to vecino_url(@vecino), notice: "Vecino was successfully updated." }
+        format.html { redirect_to residencia_path(@vecino.residencia_id), notice: "Vecino actualizado con éxito." }
         format.json { render :show, status: :ok, location: @vecino }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -70,6 +72,10 @@ class VecinosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def vecino_params
-      params.require(:vecino).permit(:residencia_id, :persona, :edad, :ocupacion, :pueblo_naturaleza, :provincia_naturaleza, :parroquia, :estado, :tiempo_residencia, :residencia_habitual, :dia_nacimiento, :mes_nacimiento, :ano_nacimiento, :classificacion, :contrib_anual, :sueldo_anual, :alquiler, :sabe_leer, :sabe_escribir, :religion, :defectos, :ano_nacimiento_estimado, :ano_llegada_estimado)
+      params.require(:vecino).permit(:residencia_id, :persona_id, :edad, :ocupacion, :pueblo_naturaleza,
+                                     :provincia_naturaleza, :parroquia, :estado, :tiempo_residencia, :residencia_habitual,
+                                     :dia_nacimiento, :mes_nacimiento, :ano_nacimiento, :classificacion, :contrib_anual,
+                                     :sueldo_anual, :alquiler, :sabe_leer, :sabe_escribir, :religion, :defectos,
+                                     :ano_nacimiento_estimado, :ano_llegada_estimado)
     end
 end

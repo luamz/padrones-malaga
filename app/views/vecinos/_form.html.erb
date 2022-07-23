@@ -34,12 +34,12 @@
       </div>
     </div>
 
-    <%= form.hidden_field :registro_id, value: @residencia.id %>
+    <%= form.hidden_field :residencia_id, value: @residencia.id %>
 
     <div class="row">
       <div class="field col-md-3">
-        <%= form.label :persona, class:'form-label'%>
-        <%= form.select :persona, options_for_select(@personas), {}, class:'form-control' %>
+        <%= form.label :persona_id, class:'form-label'%>
+        <%= form.select :persona_id, options_for_select(@personas), {}, class:'form-control' %>
       </div>
       <div class="field col-md-1">
         <%= form.label :edad, class:'form-label' %>
@@ -54,18 +54,26 @@
         <%= form.text_field :ocupacion, class:'form-control' %>
       </div>
       <div class="row col-md-4">
-        <div class="col-md-12">Nacimiento</div>
-        <div class="col-md-3">
-          <%= form.number_field :dia_nacimiento, class:'form-control' %>
-        </div>
+        <% if @residencia.dia_nacimiento || @residencia.mes_nacimiento || @residencia.ano_nacimiento %>
+          <div class="col-md-12">Nacimiento</div>
+          <% if @residencia.dia_nacimiento %>
+            <div class="col-md-3">
+              <%= form.number_field :dia_nacimiento, class:'form-control' %>
+            </div>
+          <% end %>
 
-        <div class="col-md-4">
-          <%= form.select :mes_nacimiento,  Date::MONTHNAMES[1..12],{ }, class:'form-control' %>
-        </div>
+          <% if @residencia.mes_nacimiento %>
+            <div class="col-md-4">
+              <%= form.select :mes_nacimiento,  Date::MONTHNAMES[1..12],{:include_blank => true, :default => nil }, class:'form-control' %>
+            </div>
+          <% end %>
 
-        <div class="col-md-3">
-          <%= form.text_field :ano_nacimiento, class:'form-control' %>
-        </div>
+          <% if @residencia.ano_nacimiento %>
+            <div class="col-md-3">
+              <%= form.text_field :ano_nacimiento, class:'form-control' %>
+            </div>
+          <% end %>
+        <% end %>
     </div>
     <div class="row">
       <div class="field col-md-4">
@@ -93,10 +101,12 @@
         <%= form.text_field :tiempo_residencia, class:'form-control' %>
       </div>
 
-      <div class="field col-md-4">
-        <%= form.label :residencia_habitual, class:'form-label' %>
-        <%= form.text_field :residencia_habitual, class:'form-control' %>
-      </div>
+      <% if @residencia.residencia_habitual %>
+        <div class="field col-md-4">
+          <%= form.label :residencia_habitual, class:'form-label' %>
+          <%= form.text_field :residencia_habitual, class:'form-control' %>
+        </div>
+      <% end %>
       <div class="field col-md-2">
         <%= form.label 'Nacimiento Estimado', class:'form-label' %>
         <%= form.number_field :ano_nacimiento_estimado, class:'form-control' %>
@@ -104,35 +114,47 @@
     </div>
 
     <div class="row">
-      <div class="field col-md-2">
-        <%= form.label :classificacion, class:'form-label' %>
-        <%= form.text_field :classificacion, class:'form-control' %>
-      </div>
+      <% if @residencia.classificacion %>
+        <div class="field col-md-2">
+          <%= form.label :classificacion, class:'form-label' %>
+          <%= form.text_field :classificacion, class:'form-control' %>
+        </div>
+      <% end %>
 
-      <div class="field col-md-2">
-        <%= form.label :contrib_anual, class:'form-label' %>
-        <%= form.text_field :contrib_anual, class:'form-control' %>
-      </div>
+      <% if @residencia.contrib_anual %>
+        <div class="field col-md-2">
+          <%= form.label :contrib_anual, class:'form-label' %>
+          <%= form.text_field :contrib_anual, class:'form-control' %>
+        </div>
+      <% end %>
 
-      <div class="field col-md-2">
-        <%= form.label :sueldo_anual, class:'form-label' %>
-        <%= form.text_field :sueldo_anual, class:'form-control' %>
-      </div>
+      <% if @residencia.sueldo_anual %>
+        <div class="field col-md-2">
+          <%= form.label :sueldo_anual, class:'form-label' %>
+          <%= form.text_field :sueldo_anual, class:'form-control' %>
+        </div>
+      <% end %>
 
-      <div class="field col-md-2">
-        <%= form.label :alquiler, class:'form-label' %>
-        <%= form.text_field :alquiler, class:'form-control' %>
-      </div>
+      <% if @residencia.alquiler %>
+        <div class="field col-md-2">
+          <%= form.label :alquiler, class:'form-label' %>
+          <%= form.text_field :alquiler, class:'form-control' %>
+        </div>
+      <% end %>
 
-      <div class="field col-md-2">
-        <%= form.label :religion, class:'form-label' %>
-        <%= form.text_field :religion, class:'form-control' %>
-      </div>
+      <% if @residencia.religion %>
+        <div class="field col-md-2">
+          <%= form.label :religion, class:'form-label' %>
+          <%= form.text_field :religion, class:'form-control' %>
+        </div>
+      <% end %>
 
-      <div class="field col-md-2">
-        <%= form.label :defectos, class:'form-label' %>
-        <%= form.text_field :defectos, class:'form-control' %>
-      </div>
+      <% if @residencia.defectos %>
+        <div class="field col-md-2">
+          <%= form.label :defectos, class:'form-label' %>
+          <%= form.text_field :defectos, class:'form-control' %>
+        </div>
+      <% end %>
     </div>
 
     <div class="row">
@@ -142,14 +164,18 @@
     </div>
 
     <div class="field row col-md-4 my-4">
-      <div class="field col-md-6">
-        <%= form.label :sabe_leer, class:'form-check-label' %>
-        <%= form.check_box :sabe_leer, class:'form-check-input' %>
-      </div>
-      <div class="field col-md-6">
-        <%= form.label :sabe_escribir, class:'form-check-label' %>
-        <%= form.check_box :sabe_escribir, class:'form-check-input' %>
-      </div>
+      <% if @residencia.sabe_leer %>
+        <div class="field col-md-6">
+          <%= form.label :sabe_leer, class:'form-check-label' %>
+          <%= form.check_box :sabe_leer, class:'form-check-input' %>
+        </div>
+      <% end %>
+      <% if @residencia.sabe_escribir %>
+        <div class="field col-md-6">
+          <%= form.label :sabe_escribir, class:'form-check-label' %>
+          <%= form.check_box :sabe_escribir, class:'form-check-input' %>
+        </div>
+      <% end %>
     </div>
 
     <div class="row pt-2">

@@ -8,6 +8,10 @@ class Residencia < ApplicationRecord
   delegate :nombre_distrito, to: :distrito
 
 
+
+  def direccion_completa
+    nombre + ', ' +numero if nombre.present? && numero.present?
+  end
   def todos_los_vecinos
     vecinos.map{ |vecino|  %Q(#{vecino.nombre_completo}) }.join(', ')
   end
