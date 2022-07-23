@@ -18,6 +18,9 @@ es:
       persona:
         create: "Crear Persona"
         update: "Actualizar Persona"
+      vecino:
+        create: "Crear Vecino"
+        update: "Actualizar Vecino"
 
     page_entries_info:
       more_pages:

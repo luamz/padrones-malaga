@@ -91,14 +91,14 @@
         <%= form.text_field :parroquia, class:'form-control' %>
       </div>
 
-      <div class="field col-md-2">
-        <%= form.label 'Llegada Estimada', class:'form-label' %>
-        <%= form.number_field :ano_llegada_estimado, class:'form-control' %>
-      </div>
-
       <div class="field col-md-4">
         <%= form.label :tiempo_residencia, class:'form-label' %>
         <%= form.text_field :tiempo_residencia, class:'form-control' %>
+      </div>
+
+      <div class="field col-md-2">
+        <%= form.label 'Llegada Estimada', class:'form-label' %>
+        <%= form.number_field :ano_llegada_estimado, class:'form-control' %>
       </div>
 
       <% if @residencia.residencia_habitual %>
