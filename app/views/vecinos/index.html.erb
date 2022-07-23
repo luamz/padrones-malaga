@@ -29,7 +29,7 @@
             <td><%= vecino.residencia.ano%></td>
             <td class="col-md-2"><%= vecino.residencia.nombre %></td>
             <td class=""><%= vecino.residencia.numero %></td>
-            <td class="col-md-6"><%= vecino.persona.nombre_completo %></td>
+            <td class="col-md-6"><%= link_to "#{vecino.persona.nombre_completo}", vecino.persona %>
             <td class="text-center"><%= vecino.edad %></td>
             <td class="text-center"><%= vecino.estado %></td>
             <td class="col-md-3 text-center">

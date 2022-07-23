@@ -28,7 +28,7 @@
     <table class="table table-striped">
       <thead>
       <tr>
-        <th class="col-md-2">Distrito</th>
+        <th class="col-md-2 text-center">Distrito</th>
         <th class="col-md-3 text-center">Número de Padrones</th>
       </tr>
       </thead>
@@ -36,7 +36,7 @@
       <tbody>
       <% @distritos.each do |distrito| %>
         <tr>
-          <td class="col-md-2"><%= distrito.nombre_distrito %></td>
+          <td class="col-md-2 text-center"><%= distrito.nombre_distrito %></td>
           <td class="col-md-3 text-center"><%= distrito.num_registros %></td>
           <td class="col-md-2 text-center">
             <%= link_to edit_distrito_path(distrito), class: 'btn btn-primary btn-xs text-white' do %>

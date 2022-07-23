@@ -56,11 +56,16 @@
       <div class="col-md-1">Año de Nacimiento :<h2><%= @vecino.ano_nacimiento %></h2></div>
     <% end %>
 
-    <div class=" col-md-6 my-4">
-      <%= link_to 'Editar', edit_vecino_path(@vecino), class:'btn btn-secondary botoes text-white col-md-12' %>
-    </div>
-    <div class="col-md-6 my-4">
-      <%= link_to 'Volver', request.referer, class:'btn btn-primary botoes text-white col-md-12' %>
+    <div class="col-md-12 row">
+      <div class=" col-md-4 my-4">
+        <%= link_to 'Ver Residencia', @vecino.residencia, class:'btn btn-success botoes text-white col-md-12' %>
+      </div>
+      <div class=" col-md-4 my-4">
+        <%= link_to 'Editar', edit_vecino_path(@vecino), class:'btn btn-secondary botoes text-white col-md-12' %>
+      </div>
+      <div class="col-md-4 my-4">
+        <%= link_to 'Volver', request.referer, class:'btn btn-primary botoes text-white col-md-12' %>
+      </div>
     </div>
   </div>
 </div>

@@ -2,22 +2,6 @@
   <p id="notice"><%= notice %></p>
   <div class="row">
     <div class="col-md-8"><h1>Residencias</h1></div>
-<!--    <div class="col-md-12 my-4 row">-->
-      <%#= form_with(url: residencias_path, local: true, method: :get) do |form| %>
-<!--        <div class="row">-->
-<!--          <div class="col-md-4">-->
-            <%# if params[:query].present? %>
-              <%#= form.text_field :query, class:"form-control", value: params[:query], placeholder:"Número o nombre..." %>
-            <%# else %>
-              <%#= form.text_field :query, class:"form-control",  placeholder:"Número o nombre..." %>
-            <%# end %>
-<!--          </div>-->
-<!--          <div class= "col-md-4">-->
-            <%#= form.submit "Buscar", class:"btn btn-secondary botoes" %>
-<!--          </div>-->
-<!--        </div>-->
-      <%# end %>
-<!--    </div>-->
   </div>
 
 
@@ -37,7 +21,7 @@
       <tbody>
       <% @residencias.each do |residencia| %>
         <tr>
-          <td class="col-md-4"><%= residencia.nombre %></td>
+          <td class="col-md-4"><%= link_to "#{residencia.nombre}", residencia.registro.nombre_calle.calle %></td>
           <td class="col-md-1 text-center"><%= residencia.numero %></td>
           <td class="text-center"><%= residencia.piso %></td>
           <td class="text-center"><%= residencia.dpto %></td>

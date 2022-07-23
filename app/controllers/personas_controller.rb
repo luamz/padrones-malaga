@@ -13,6 +13,7 @@ class PersonasController < ApplicationController
 
   # GET /personas/1 or /personas/1.json
   def show
+    @vecinos = @persona.vecinos
   end
 
   # GET /personas/1/edit
@@ -38,7 +39,7 @@ class PersonasController < ApplicationController
   def update
     respond_to do |format|
       if @persona.update(persona_params)
-        format.html { redirect_to personas_path, notice: "Persona actualizada con éxito." }
+        format.html { redirect_to @persona, notice: "Persona actualizada con éxito." }
         format.json { render :show, status: :ok, location: @persona }
       else
         format.html { render :edit, status: :unprocessable_entity }

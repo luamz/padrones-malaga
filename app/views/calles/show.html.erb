@@ -38,6 +38,18 @@
     </tr>
     </thead>
 
+    <div class="row col-md-12 my-2">
+      <div class= "col-md-3">
+        <%= link_to "Agregar Nombre", new_nombre_calle_nombre_calles_path(@calle), class:"btn btn-success botoes text-white" %>
+      </div>
+      <div class=" col-md-3">
+        <%= link_to 'Editar', edit_calle_path(@calle), class:'btn btn-secondary botoes text-white col-md-12' %>
+      </div>
+      <div class="col-md-3">
+        <%= link_to 'Volver', request.referer, class:'btn btn-primary botoes text-white col-md-12' %>
+      </div>
+    </div>
+
     <tbody>
     <% @registros.each do |registro| %>
       <tr>
@@ -57,15 +69,4 @@
     </tbody>
   </table>
 
-  <div class="row col-md-12">
-    <div class="col-md-3">
-      <%= link_to 'Volver', calles_path, class:'btn btn-primary botoes text-white col-md-12' %>
-    </div>
-    <div class= "col-md-3">
-      <%= link_to "Agregar Nombre", new_nombre_calle_nombre_calles_path(@calle), class:"btn btn-dark botoes text-white" %>
-    </div>
-    <div class=" col-md-3">
-      <%= link_to 'Editar', edit_calle_path(@calle), class:'btn btn-secondary botoes text-white col-md-12' %>
-    </div>
-  </div>
 </div>

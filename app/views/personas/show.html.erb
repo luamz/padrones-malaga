@@ -1,64 +1,100 @@
-<p id="notice"><%= notice %></p>
+<div class="col-md-12 mx-auto">
+  <p id="notice"><%= notice %></p>
+  <div class="pb-4 row">
+    <div class="col-md-6">Persona:<h2> <%= @persona.nombre_completo %></h2></div>
 
-<p>
-  <strong>Nombre:</strong>
-  <%= @persona.nombre %>
-</p>
+    <div class="col-md-3">Nacimiento:<h2> <%= @persona.nacimiento %></h2></div>
+    <div class="col-md-3">Ciudad:<h2> <%= @persona.ciudad_nacimiento %>
+        <% if @persona.ciudad_nacimiento.present? %>
+          <% if @persona.confirmacion_nacimiento %>
+            <i class="fa fa-check"></i>
+          <% else %>
+            <i class="fa fa-x"></i>
+          <% end %>
+        <% end %>
+      </h2>
+    </div>
 
-<p>
-  <strong>Apellido1:</strong>
-  <%= @persona.apellido1 %>
-</p>
+    <div class="col-md-3">Bautismo:<h2> <%= @persona.bautismo %></h2></div>
+    <div class="col-md-3">Parroquia:<h2> <%= @persona.parroquia %>
+        <% if @persona.parroquia.present? %>
+          <% if @persona.confirmacion_bautismo %>
+            <i class="fa fa-check"></i>
+          <% else %>
+            <i class="fa fa-x"></i>
+          <% end %>
+        <% end %>
+      </h2>
+    </div>
+    <% if @persona.defuncion.present?%>
+      <div class="col-md-3">Defunción:<h2> <%= @persona.defuncion %></h2></div>
+      <div class="col-md-3">Ciudad:<h2> <%= @persona.ciudad_defuncion %>
+        <% if @persona.confirmacion_defuncion %>
+          <i class="fa fa-check"></i>
+        <% else %>
+          <i class="fa fa-x"></i>
+        <% end %>
+        </h2>
+    </div>
+    <% end %>
+    <div class="row col-md-12 my-2">
+      <div class="col-md-6"></div>
+      <div class=" col-md-3">
+        <%= link_to 'Editar', edit_persona_path(@persona), class:'btn btn-secondary botoes text-white col-md-12' %>
+      </div>
+      <div class="col-md-3">
+        <%= link_to 'Volver', personas_path, class:'btn btn-primary botoes text-white col-md-12' %>
+      </div>
+    </div>
 
-<p>
-  <strong>Apellido2:</strong>
-  <%= @persona.apellido2 %>
-</p>
+    <% if @vecinos.present? %>
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>Año</th>
+          <th>Residencia</th>
+          <th>Nº</th>
+          <th class="text-center" style="font-size: medium">Edad</th>
+          <th class="text-center">Estado</th>
+          <th class="text-center">Naturaleza</th>
+          <th class="text-center">Parroquia</th>
+          <th class="text-center">Ocupacion</th>
+          <th class="text-center" style="font-size: small">Tiempo residencia</th>
+          <th class="text-center" style="font-size: small">Nacimiento estimado</th>
+          <th class="text-center" style="font-size: small">Llegada estimada</th>
+        </tr>
+        </thead>
 
-<p>
-  <strong>Nacimiento:</strong>
-  <%= @persona.nacimiento %>
-</p>
+        <tbody>
+        <% @vecinos.each do |vecino| %>
+          <tr>
+            <td><%= vecino.residencia.ano%></td>
+            <td class="col-md-2"><%= vecino.residencia.nombre %></td>
+            <td class=""><%= vecino.residencia.numero %></td>
+            <td class="text-center"><%= vecino.edad %></td>
+            <td class="text-center"><%= vecino.estado %></td>
+            <td class="col-md-3 text-center">
+              <% if vecino.pueblo_naturaleza.present? %>
+                <%= vecino.pueblo_naturaleza %>, <%= vecino.provincia_naturaleza %>
+              <% end %>
+            </td>
+            <td class="col-md-1 text-center"><%= vecino.parroquia %></td>
+            <td class="col-md-1 text-center"><%= vecino.ocupacion %></td>
+            <td class="text-center"><%= vecino.tiempo_residencia %></td>
+            <td class="text-center"><%= vecino.ano_nacimiento_estimado %></td>
+            <td class="text-center"><%= vecino.ano_llegada_estimado %></td>
+            <td class="col-md-3 text-center">
+              <%= link_to vecino, class: 'btn btn-success btn-xs text-white' do %>
+                <i class="fa fa-eye"></i>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      Ningun vecino encontrado
+    <% end %>
 
-<p>
-  <strong>Ciudad nacimiento:</strong>
-  <%= @persona.ciudad_nacimiento %>
-</p>
-
-<p>
-  <strong>Confirmacion nacimiento:</strong>
-  <%= @persona.confirmacion_nacimiento %>
-</p>
-
-<p>
-  <strong>Defuncion:</strong>
-  <%= @persona.defuncion %>
-</p>
-
-<p>
-  <strong>Ciudad defuncion:</strong>
-  <%= @persona.ciudad_defuncion %>
-</p>
-
-<p>
-  <strong>Confirmacion defuncion:</strong>
-  <%= @persona.confirmacion_defuncion %>
-</p>
-
-<p>
-  <strong>Bautismo:</strong>
-  <%= @persona.bautismo %>
-</p>
-
-<p>
-  <strong>Parroquia:</strong>
-  <%= @persona.parroquia %>
-</p>
-
-<p>
-  <strong>Confirmacion bautismo:</strong>
-  <%= @persona.confirmacion_bautismo %>
-</p>
-
-<%= link_to 'Edit', edit_persona_path(@persona) %> |
-<%= link_to 'Back', personas_path %>
+  </div>
+</div>

@@ -37,7 +37,7 @@
     <tbody>
     <% @residencia.vecinos.each do |vecino| %>
       <tr>
-        <td class="col-md-1"><%= link_to "#{vecino.nombre_completo}", vecino %></td>
+        <td class="col-md-1"><%= link_to "#{vecino.nombre_completo}", vecino.persona %></td>
         <td class="text-center"><%= vecino.edad %></td>
         <td class="text-center"><%= vecino.ano_nacimiento_estimado %></td>
         <td class="text-center"><%= vecino.estado %></td>
@@ -70,11 +70,11 @@
 
 
   <div class="row col-md-12">
+    <div class= "col-md-3">
+      <%= link_to "Agregar Vecinos", new_vecinos_path(@residencia), class:"btn btn-success botoes text-white" %>
+    </div>
     <div class="col-md-3">
       <%= link_to 'Volver', residencias_path, class:'btn btn-primary botoes text-white col-md-12' %>
-    </div>
-    <div class= "col-md-3">
-      <%= link_to "Agregar Vecinos", new_vecinos_path(@residencia), class:"btn btn-dark botoes text-white" %>
     </div>
     <div class=" col-md-3">
       <%= link_to 'Editar', edit_residencia_path(@residencia), class:'btn btn-secondary botoes text-white col-md-12' %>

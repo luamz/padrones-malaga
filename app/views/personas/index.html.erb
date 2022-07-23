@@ -25,26 +25,13 @@
       <tbody>
         <% @personas.each do |persona| %>
           <tr>
-            <td class="col-md-2"><%= persona.nombre_completo %></td>
+            <td class="col-md-2"><%= link_to "#{persona.nombre_completo}", persona %></td>
             <td class="col-md-1 text-center"> <%= persona.nacimiento %> </td>
-            <td class="col-md-2 text-center"><%= persona.ciudad_nacimiento %>
-              <% if persona.confirmacion_nacimiento.present?%>
-                <i class="fa fa-check"></i>
-              <% end %>
-            </td>
+            <td class="col-md-2 text-center"><%= persona.ciudad_nacimiento %></td>
             <td class="col-md-1 text-center"><%= persona.bautismo %></td>
-            <td class="col-md-2 text-center"><%= persona.parroquia %>
-              <% if persona.confirmacion_bautismo.present?%>
-                <i class="fa fa-check"></i>
-              <% end %>
-            </td>
+            <td class="col-md-2 text-center"><%= persona.parroquia %></td>
             <td class="col-md-1 text-center"><%= persona.defuncion %></td>
-            <td class="col-md-2 text-center"><%= persona.ciudad_defuncion %>
-              <% if persona.confirmacion_defuncion.present?%>
-                <i class="fa fa-check"></i>
-              <% end %>
-            </td>
-
+            <td class="col-md-2 text-center"><%= persona.ciudad_defuncion %></td>
             <td class="col-md-1 text-center">
               <%= link_to edit_persona_path(persona), class: 'btn btn-primary btn-xs text-white' do %>
                 <i class="fa fa-pencil"></i>
