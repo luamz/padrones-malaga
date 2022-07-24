@@ -3,7 +3,7 @@ class VecinosController < ApplicationController
 
   # GET /vecinos or /vecinos.json
   def index
-    @vecinos = Vecino.all
+    @vecinos = Vecino.all.sort_by { |vecinos |  vecinos.residencia.ano}
   end
 
   # GET /vecinos/1 or /vecinos/1.json
@@ -13,7 +13,7 @@ class VecinosController < ApplicationController
   # GET /vecinos/new
   def new
     personas = []
-    Persona.all.each {|persona| personas << [persona.nombre_completo, persona.id]}
+    Persona.all.order(:nombre).each {|persona| personas << [persona.nombre_completo, persona.id]}
     @personas = personas
     @vecino = Vecino.new
     @residencia = Residencia.find(params[:residencia_id])
@@ -77,6 +77,6 @@ class VecinosController < ApplicationController
                                      :provincia_naturaleza, :parroquia, :estado, :tiempo_residencia, :residencia_habitual,
                                      :dia_nacimiento, :mes_nacimiento, :ano_nacimiento, :classificacion, :contrib_anual,
                                      :sueldo_anual, :alquiler, :sabe_leer, :sabe_escribir, :religion, :defectos,
-                                     :ano_nacimiento_estimado, :ano_llegada_estimado)
+                                     :ano_nacimiento_estimado, :ano_llegada_estimado, :papel)
     end
 end

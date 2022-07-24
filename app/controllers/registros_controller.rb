@@ -26,7 +26,7 @@ class RegistrosController < ApplicationController
     @nombre_calle = @registro.nombre_calle.nombre_calle
     nombres_calles = []
     NombreCalle.all.each {|nombre_calle| nombres_calles << nombre_calle.nombre_calle}
-    @nombres_calles = nombres_calles
+    @nombres_calles = nombres_calles.sort
 
   end
 

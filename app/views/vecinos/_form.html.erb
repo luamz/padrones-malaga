@@ -53,6 +53,10 @@
         <%= form.label :ocupacion, class:'form-label' %>
         <%= form.text_field :ocupacion, class:'form-control' %>
       </div>
+      <div class="field col-md-2">
+        <%= form.label :papel, class:'form-label' %>
+        <%= form.text_field :papel, class:'form-control' %>
+      </div>
       <div class="row col-md-4">
         <% if @residencia.dia_nacimiento || @residencia.mes_nacimiento || @residencia.ano_nacimiento %>
           <div class="col-md-12">Nacimiento</div>

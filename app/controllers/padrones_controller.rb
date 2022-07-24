@@ -3,12 +3,12 @@ class PadronesController < ApplicationController
 
   # GET /padrones or /padrones.json
   def index
-    @padrones = Padron.all
+    @padrones = Padron.all.order(:ano)
   end
 
   # GET /padrones/1 or /padrones/1.json
   def show
-    @registros = Registro.where(padron:@padron).all
+    @registros = Registro.where(padron:@padron).all.order(:pagina_inicio)
   end
 
   # GET /padrones/new

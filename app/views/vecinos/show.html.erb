@@ -17,6 +17,7 @@
     <div class="col-md-2">Llegada estimado :<h2><%= @vecino.ano_llegada_estimado %></h2></div>
     <div class="col-md-2">Estado Civil :<h2><%= @vecino.estado_civil %></h2></div>
     <% if @vecino.ocupacion.present? %><div class="col-md-2">Ocupación :<h2><%= @vecino.ocupacion %></h2></div><% end %>
+    <div class="col-md-2">Papel :<h2><%= @vecino.papel %></h2></div>
     <% if @vecino.religion.present? %><div class="col-md-4">Religión :<h2><%= @vecino.religion %></h2></div><% end %>
 
     <% if @vecino.residencia_habitual.present? %>

@@ -13,6 +13,7 @@
           <th>Nº</th>
           <th>Persona</th>
           <th class="text-center" style="font-size: medium">Edad</th>
+          <th class="text-center" style="font-size: medium">Papel</th>
           <th class="text-center">Estado</th>
           <th class="text-center">Naturaleza</th>
           <th class="text-center">Parroquia</th>
@@ -31,6 +32,7 @@
             <td class=""><%= vecino.residencia.numero %></td>
             <td class="col-md-6"><%= link_to "#{vecino.persona.nombre_completo}", vecino.persona %>
             <td class="text-center"><%= vecino.edad %></td>
+            <td class="text-center"><%= vecino.papel %></td>
             <td class="text-center"><%= vecino.estado %></td>
             <td class="col-md-3 text-center">
               <% if vecino.pueblo_naturaleza.present? %>
