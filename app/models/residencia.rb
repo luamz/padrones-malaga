@@ -1,5 +1,6 @@
 class Residencia < ApplicationRecord
   belongs_to :registro
+  belongs_to :familia
   has_many :vecinos
   delegate :nombre_calle, to: :registro
   delegate :nombre, to: :nombre_calle

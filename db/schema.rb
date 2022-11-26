@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_24_104056) do
+ActiveRecord::Schema.define(version: 2022_11_26_101927) do
 
   create_table "barrios", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "nombre_barrio"
@@ -119,6 +119,8 @@ ActiveRecord::Schema.define(version: 2022_07_24_104056) do
     t.boolean "dia_nacimiento"
     t.boolean "mes_nacimiento"
     t.boolean "ano_nacimiento"
+    t.bigint "familia_id"
+    t.index ["familia_id"], name: "index_residencias_on_familia_id"
     t.index ["registro_id"], name: "index_residencias_on_registro_id"
   end
 
@@ -157,6 +159,7 @@ ActiveRecord::Schema.define(version: 2022_07_24_104056) do
   add_foreign_key "nombre_calles", "calles"
   add_foreign_key "padrones", "distritos"
   add_foreign_key "registros", "padrones"
+  add_foreign_key "residencias", "familias"
   add_foreign_key "residencias", "registros"
   add_foreign_key "vecinos", "personas"
   add_foreign_key "vecinos", "residencias"

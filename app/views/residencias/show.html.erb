@@ -11,13 +11,16 @@
     <% if @residencia.dpto.present? %>
       <div class="col-md-1 text-center">Departamento: <h2><%= @residencia.dpto%></h2></div>
     <% end %>
+    <% if @residencia.observaciones.present? %>
+      <div class="col-md-12">Fonte/Observaciones: <h2><%= @residencia.observaciones%></h2></div>
+    <% end %>
   </div>
 
   <table class="table table-striped">
     <thead>
     <tr>
       <th class="text-center">Papel</th>
-      <th class="col-md-5">Nombre</th>
+      <th class="col-md-5 text-center">Nombre</th>
       <th class="text-center">Edad</th>
       <th class="text-center " style="font-size: small">Nacimiento Estimado</th>
       <th class="text-center">Estado</th>
@@ -27,7 +30,7 @@
       <th class="text-center" style="font-size: small">Llegada Estimada</th>
       <th class="col-md-1 text-center">Ocupacíon</th>
       <% if @residencia.alquiler %>
-        <th class="text-center" style="font-size: small">Alquiler(Pesetas</th>
+        <th class="text-center" style="font-size: small">Alquiler(Pesetas)</th>
       <% end %>
     </tr>
     </thead>
@@ -36,11 +39,16 @@
     <% @vecinos.each do |vecino| %>
       <tr>
         <td class="col-md-1 text-center"><%= vecino.papel %></td>
-        <td class="col-md-1"><%= link_to "#{vecino.nombre_completo}", vecino.persona %></td>
+        <td class="col-md-1  text-center"><%= link_to "#{vecino.nombre_completo}", vecino.persona %></td>
         <td class="text-center"><%= vecino.edad %></td>
         <td class="text-center"><%= vecino.ano_nacimiento_estimado %></td>
         <td class="text-center"><%= vecino.estado %></td>
-        <td class="col-md-1 text-center"><%= vecino.pueblo_naturaleza %>, <%= vecino.provincia_naturaleza %></td>
+        <td class="col-md-1 text-center">
+          <% if vecino.pueblo_naturaleza.present? %>
+            <%= vecino.pueblo_naturaleza %> ,
+          <% end %>
+            <%= vecino.provincia_naturaleza %>
+        </td>
         <td class="col-md-1 text-center"><%= vecino.parroquia %></td>
         <td class="text-center"><%= vecino.tiempo_residencia %></td>
         <td class="text-center"><%= vecino.ano_llegada_estimado %></td>

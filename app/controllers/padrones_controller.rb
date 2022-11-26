@@ -8,7 +8,7 @@ class PadronesController < ApplicationController
 
   # GET /padrones/1 or /padrones/1.json
   def show
-    @registros = Registro.where(padron:@padron).all.order(:pagina_inicio)
+    @registros = Registro.where(padron:@padron).all.order(:parte).order(:pagina_inicio)
   end
 
   # GET /padrones/new

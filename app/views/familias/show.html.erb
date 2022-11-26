@@ -1,13 +1,60 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Apellidos:</strong>
-  <%= @familia.apellidos %>
+Apellidos:
+<h2><%= @familia.apellidos %></h2>
 
-  <% @familia.personas.each do |persona| %>
-    <h2><%= persona.nombre_completo%></h2>
+Miembros:
+<% @familia.personas.each do |persona| %>
+  <h2><%= persona.nombre_completo%></h2>
+<% end %>
+
+
+<div class="row col-md-12 my-2">
+  <div class= "col-md-3">
+    <%= link_to "Agregar Miembro", new_nombre_calle_nombre_calles_path(@familia), class:"btn btn-success botoes text-white" %>
+  </div>
+  <div class=" col-md-3">
+    <%= link_to 'Editar', edit_familia_path(@familia), class:'btn btn-secondary botoes text-white col-md-12' %>
+  </div>
+  <div class="col-md-3">
+    <%= link_to 'Volver', request.referer, class:'btn btn-primary botoes text-white col-md-12' %>
+  </div>
+</div>
+
+Residencias:
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th class="text-center">Año</th>
+    <th class="col-md-1 text-center">Distrito</th>
+    <th class="col-md-6 text-center">Calle</th>
+    <th class="col-md-1 text-center">Numero</th>
+    <th class="col-md-1 text-center">Piso</th>
+    <th class="col-md-1 text-center">Departamento</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @familia.residencias.each do |residencia| %>
+    <tr>
+      <td class="col-md-2 text-center"><%= residencia.ano %></td>
+      <td class="col-md-1 text-center"><%= residencia.nombre_distrito %></td>
+      <td class="col-md-6 text-center"><%= residencia.nombre %></td>
+      <td class="col-md-1 text-center"><%= residencia.numero %></td>
+      <td class="col-md-1 text-center"><%= residencia.piso %></td>
+      <td class="col-md-1 text-center"><%= residencia.dpto %></td>
+
+      <td class="col-md-1 text-center">
+        <%= link_to residencia, class: 'btn btn-success btn-xs text-white' do %>
+          <i class="fa fa-eye"></i>
+        <% end %>
+      </td>
+      <td class= "col-md-1 text-center">
+        <%= link_to edit_residencia_path(residencia), class: 'btn btn-primary btn-xs text-white' do %>
+          <i class="fa fa-pencil"></i>
+        <% end %>
+      </td>
+    </tr>
   <% end %>
-</p>
-
-<%= link_to 'Edit', edit_familia_path(@familia) %> |
-<%= link_to 'Back', familias_path %>
+  </tbody>
+</table>

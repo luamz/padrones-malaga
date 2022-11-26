@@ -1,9 +1,9 @@
 <div class="mx-auto">
   <p id="notice"><%= notice %></p>
   <div class="pb-4 row">
-    <div class="col-md-2">Padrón (Año):<h1><%= @padron.ano%></h1></div>
-    <div class="col-md-2">Distrito: <h1><%= @padron.distrito.nombre_distrito%></h1></div>
-    <div class="col-md-2">Calles: <h1><%= @padron.num_registros%></h1></div>
+    <div class="col-md-2">Padrón (Año):<h2><%= @padron.ano%></h2></div>
+    <div class="col-md-2" >Distrito: <h2><%= @padron.distrito.nombre_distrito%></h2></div>
+    <div class="col-md-2">Calles: <h2><%= @padron.num_registros%></h2></div>
     <% if @padron.enlace2.present? %>
       <div class="col-md-3 mt-2">
         <%= link_to @padron.enlace, class: 'btn btn-success text-white', target: :_blank do %>

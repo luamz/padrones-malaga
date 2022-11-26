@@ -23,7 +23,7 @@
       <% @padrones.each do |padron| %>
         <tr>
           <td class="col-md-1"><%= link_to "#{padron.ano}", padron %></td>
-          <td class="col-md-1 text-center"><%= link_to "#{padron.distrito.nombre_distrito}", padron.distrito %></td>
+          <td class="col-md-2 text-center"><%= link_to "#{padron.distrito.nombre_distrito}", padron.distrito %></td>
           <td class="col-md-1 text-center"><%= padron.num_registros %></td>
           <td class="col-md-1 text-center"><%= padron.num_residencias %></td>
           <% if padron.terminado? %>
