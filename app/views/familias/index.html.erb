@@ -1,27 +1,51 @@
-<p id="notice"><%= notice %></p>
+<div class="col-md-12 mx-auto">
+  <p id="notice"><%= notice %></p>
+  <div class="row">
+    <div class="col-md-8"><h1>Familia</h1></div>
+    <div class="col-md-4">
+      <%= link_to 'Nueva Familia', new_familia_path, class:'btn btn-primary botoes text-white'%>
+    </div>
+  </div>
+  <br>
 
-<h1>Familias</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Apellidos</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @familias.each do |familia| %>
+  <% if @familias.present? %>
+    <table class="table table-striped">
+      <thead>
       <tr>
-        <td><%= familia.apellidos %></td>
-        <td><%= link_to 'Show', familia %></td>
-        <td><%= link_to 'Edit', edit_familia_path(familia) %></td>
-        <td><%= link_to 'Destroy', familia, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Apellidos</th>
+        <th class="text-center">Padres</th>
+        <th class="text-center">Hijos</th>
+        <th class="text-center">Otros</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+      </thead>
 
-<br>
+      <tbody>
+      <% @familias.each do |familia| %>
+        <tr>
+          <td class="col-md-1"><%= link_to "#{familia.primer_apellido} #{familia.segundo_apellido}", familia %></td>
+          <td class="col-md-2 text-center"> <%= familia.progenitores %> </td>
+          <td class="col-md-4"> <%= familia.hijos %> </td>
+          <td class="col-md-2 text-center"> <%= familia.otros %> </td>
+          <td class="col-md-2">
+            <%= link_to new_familias_persona_path(@familia), class: 'btn btn-dark btn-xs text-white' do %>
+              <i class="fa fa-plus"></i>
+              Agregar Miembro
+            <% end %>
+          </td>
+          <td  class="col-md-2">
+          <%= link_to edit_familia_path(familia), class: 'btn btn-primary btn-xs text-white' do %>
+            <i class="fa fa-pencil"></i>
+            Editar
+          <% end %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    Ninguna familia encontrada
+  <% end %>
 
-<%= link_to 'New Familia', new_familia_path %>
+</div>
+
+

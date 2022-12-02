@@ -21,6 +21,9 @@ es:
       vecino:
         create: "Crear Vecino"
         update: "Actualizar Vecino"
+      familia:
+        create: "Crear Familia"
+        update: "Actualizar Familia"
 
     page_entries_info:
       more_pages:

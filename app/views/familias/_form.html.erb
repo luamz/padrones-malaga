@@ -1,22 +1,36 @@
 <%= form_with(model: familia, local: true) do |form| %>
-  <% if familia.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(familia.errors.count, "error") %> prohibited this familia from being saved:</h2>
+  <div class="col-md-8 mx-auto">
+    <% if familia.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(familia.errors.count, "error") %> prohibited this familia from being saved:</h2>
 
-      <ul>
-        <% familia.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+        <ul>
+          <% familia.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="row">
+      <div class="field col-md-6 text-center">
+        <%= form.label :primer_apellido, class:'form-label' %>
+        <%= form.text_field :primer_apellido, class:'form-control' %>
+      </div>
+
+      <div class="field col-md-6 text-center">
+        <%= form.label :segundo_apellido, class:'form-label' %>
+        <%= form.text_field :segundo_apellido, class:'form-control' %>
+      </div>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= form.label :apellidos %>
-    <%= form.text_field :apellidos %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+    <div class="row pt-2">
+      <div class= "col-md-4">
+        <%= form.submit class:"btn btn-success botoes" %>
+      </div>
+      <div class="col-md-4">
+        <%= link_to 'Volver', request.referer, class:'btn btn-primary botoes text-white col-md-12' %>
+      </div>
+    </div>
   </div>
 <% end %>

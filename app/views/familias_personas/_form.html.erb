@@ -1,0 +1,24 @@
+<%= form_with(model: FamiliasPersona, local: true) do |form| %>
+  <div class="col-md-8 mx-auto">
+    <% if @familia_persona.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@familia_persona.errors.count, "error") %> prohibited this familia_persona from being saved:</h2>
+
+        <ul>
+          <% @familia_persona.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="row pt-2">
+      <div class= "col-md-4">
+        <%= form.submit class:"btn btn-success botoes" %>
+      </div>
+      <div class="col-md-4">
+        <%= link_to 'Volver', request.referer, class:'btn btn-primary botoes text-white col-md-12' %>
+      </div>
+    </div>
+  </div>
+<% end %>

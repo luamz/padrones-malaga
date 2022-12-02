@@ -13,6 +13,7 @@ class FamiliasController < ApplicationController
   # GET /familias/new
   def new
     @familia = Familia.new
+    @personas = Persona.all
   end
 
   # GET /familias/1/edit
@@ -65,6 +66,6 @@ class FamiliasController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def familia_params
-      params.require(:familia).permit(:apellidos)
+      params.require(:familia).permit(:primer_apellido, :segundo_apellido)
     end
 end

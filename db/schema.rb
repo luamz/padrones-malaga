@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_26_101927) do
+ActiveRecord::Schema.define(version: 2022_12_02_181926) do
 
   create_table "barrios", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "nombre_barrio"
@@ -32,14 +32,16 @@ ActiveRecord::Schema.define(version: 2022_11_26_101927) do
   end
 
   create_table "familias", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.string "apellidos"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "primer_apellido"
+    t.string "segundo_apellido"
   end
 
   create_table "familias_personas", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "persona_id", null: false
     t.bigint "familia_id", null: false
+    t.string "papel"
     t.index ["familia_id", "persona_id"], name: "index_familias_personas_on_familia_id_and_persona_id"
   end
 

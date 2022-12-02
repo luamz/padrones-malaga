@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :residencias
   resources :personas
   resources :familias
+  resources :familias_personas
   root to: 'padrones#index'
 
   resources :registros do

@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 Apellidos:
-<h2><%= @familia.apellidos %></h2>
+<h2><%= @familia.primer_apellido %> <%= @familia.segundo_apellido %></h2>
 
 Miembros:
 <% @familia.personas.each do |persona| %>
@@ -11,7 +11,7 @@ Miembros:
 
 <div class="row col-md-12 my-2">
   <div class= "col-md-3">
-    <%= link_to "Agregar Miembro", new_nombre_calle_nombre_calles_path(@familia), class:"btn btn-success botoes text-white" %>
+    <%= link_to "Agregar Miembro", new_familias_persona_path(@familia), class:"btn btn-success botoes text-white" %>
   </div>
   <div class=" col-md-3">
     <%= link_to 'Editar', edit_familia_path(@familia), class:'btn btn-secondary botoes text-white col-md-12' %>
